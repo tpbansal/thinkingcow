@@ -1,0 +1,374 @@
+---
+layout: default
+title: Digital Mirror
+permalink: /saltlick/digital-mirror/
+---
+
+<div class="mirror-container">
+    <h1>Digital Mirror</h1>
+    <p><em>This information is already visible to any website you visit</em></p>
+
+    <section class="mirror-section">
+        <h2>Network & Location</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">IP Address:</span>
+                <span id="ip-address">Loading...</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Location:</span>
+                <span id="location">Loading...</span>
+            </div>
+            <div class="info-item">
+                <span class="label">ISP:</span>
+                <span id="isp">Loading...</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Connection Type:</span>
+                <span id="connection-type"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Effective Bandwidth:</span>
+                <span id="bandwidth"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Browser & System</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">User Agent:</span>
+                <span id="user-agent"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Browser:</span>
+                <span id="browser"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Browser Version:</span>
+                <span id="browser-version"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Operating System:</span>
+                <span id="os"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Platform:</span>
+                <span id="platform"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">CPU Cores:</span>
+                <span id="cpu-cores"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Memory (RAM):</span>
+                <span id="memory"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Languages:</span>
+                <span id="languages"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Display & Hardware</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Screen Resolution:</span>
+                <span id="screen-resolution"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Available Resolution:</span>
+                <span id="available-resolution"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Color Depth:</span>
+                <span id="color-depth"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Pixel Ratio:</span>
+                <span id="pixel-ratio"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Touch Support:</span>
+                <span id="touch-support"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">WebGL Renderer:</span>
+                <span id="webgl-renderer"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">WebGL Vendor:</span>
+                <span id="webgl-vendor"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Privacy & Tracking</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Do Not Track:</span>
+                <span id="do-not-track"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Cookies Enabled:</span>
+                <span id="cookies-enabled"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Local Storage:</span>
+                <span id="local-storage"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Session Storage:</span>
+                <span id="session-storage"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">IndexedDB:</span>
+                <span id="indexeddb"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Third-party Cookies:</span>
+                <span id="third-party-cookies"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Ad Blocker:</span>
+                <span id="ad-blocker"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Browser Capabilities</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">WebRTC Support:</span>
+                <span id="webrtc-support"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Geolocation API:</span>
+                <span id="geolocation-api"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Notification API:</span>
+                <span id="notification-api"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Service Workers:</span>
+                <span id="service-workers"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">WebAssembly:</span>
+                <span id="webassembly"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Battery API:</span>
+                <span id="battery-api"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Installed Plugins</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Plugin Count:</span>
+                <span id="plugin-count"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Plugin List:</span>
+                <span id="plugin-list"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Fingerprinting Identifiers</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Canvas Fingerprint:</span>
+                <span id="canvas-fingerprint"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">WebGL Fingerprint:</span>
+                <span id="webgl-fingerprint"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Audio Fingerprint:</span>
+                <span id="audio-fingerprint"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Font Fingerprint:</span>
+                <span id="font-fingerprint"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Session Information</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Timezone:</span>
+                <span id="timezone"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Visit Time:</span>
+                <span id="visit-time"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Referrer:</span>
+                <span id="referrer"></span>
+            </div>
+            <div class="info-item">
+                <span class="label">Page Load Time:</span>
+                <span id="load-time"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>Site Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Visits</h3>
+                <div class="stat-value" id="total-visits">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Unique Visitors</h3>
+                <div class="stat-value" id="unique-visitors">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Page Views</h3>
+                <div class="stat-value" id="page-views">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Avg. Session Duration</h3>
+                <div class="stat-value" id="avg-duration">0m</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="last-updated">
+        Last updated: <span id="last-update"></span>
+    </div>
+</div>
+
+<style>
+.mirror-container {
+    margin-bottom: 40px;
+}
+
+.mirror-container h1 {
+    font-size: 24px;
+    margin: 30px 0 20px 0;
+    color: var(--text-color);
+}
+
+.mirror-container p {
+    margin-bottom: 30px;
+    font-style: italic;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.mirror-section {
+    margin-bottom: 40px;
+}
+
+.mirror-section h2 {
+    font-size: 20px;
+    margin: 30px 0 15px 0;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.info-grid {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.info-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.label {
+    font-weight: bold;
+    color: var(--link-color);
+    min-width: 150px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: var(--subtle-bg);
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.stat-card:hover {
+    background-color: var(--hover-bg);
+}
+
+.stat-card h3 {
+    margin: 0 0 8px 0;
+    color: var(--link-color);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.last-updated {
+    text-align: center;
+    color: var(--text-color);
+    font-style: italic;
+    margin-top: 30px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .info-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .label {
+        min-width: auto;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+</style>
+
+<script src="{{ '/assets/js/mirror.js' | relative_url }}"></script>

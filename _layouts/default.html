@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+    <!-- SEO tags -->
+    {% seo %}
+
+    <!-- Google Analytics Integration -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="{{ '/' | relative_url }}" style="color: inherit; text-decoration: none;">{{ site.title }}</a></h1>
+            <p>{{ site.description }}</p>
+        </header>
+
+        <nav>
+            {% for item in site.navigation %}
+                {% assign current = false %}
+                {% if page.url == item.url %}
+                    {% assign current = true %}
+                {% elsif page.url contains '/posts/' and item.url == '/posts/' %}
+                    {% assign current = true %}
+                {% endif %}
+                <a href="{{ item.url | relative_url }}"{% if current %} class="current"{% endif %}>{{ item.title }}</a>
+            {% endfor %}
+        </nav>
+
+        <main class="content">
+            {{ content }}
+        </main>
+
+        <footer>
+            <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. Exploring the digital frontier.</p>
+            {% if site.social %}
+            <div class="social-links">
+                {% if site.social.github %}<a href="{{ site.social.github }}" target="_blank">GitHub</a>{% endif %}
+                {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>{% endif %}
+                {% if site.social.email %}<a href="mailto:{{ site.social.email }}">Email</a>{% endif %}
+            </div>
+            {% endif %}
+        </footer>
+    </div>
+</body>
+</html>

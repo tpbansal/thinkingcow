@@ -1,0 +1,62 @@
+title: Thinking Cow
+description: Personal thoughts, projects, and digital experiments
+url: https://www.thinkingcow.dev
+baseurl: ""
+
+author:
+  name: Thinking Cow
+  email: tapasvi@thinkingcow.dev
+  github: tpbansal
+  linkedin: tapasvibansal
+
+# GitHub Pages settings
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /moo/:name/
+  docs:
+    output: true
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+
+# Site navigation
+navigation:
+  - title: Teleport
+    url: /
+  - title: Moo
+    url: /posts/
+  - title: Saltlick
+    url: /experiments/
+  - title: Herd
+    url: /about/
+
+# Social links
+social:
+  github: https://github.com/tpbansal
+  linkedin: https://linkedin.com/in/tapasvibansal
+  email: tapasvi@thinkingcow.dev
+
+# Site settings
+timezone: UTC
+encoding: utf-8
+future: false
+safe: true
