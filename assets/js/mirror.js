@@ -1,60 +1,5 @@
-// Initialize visitor stats
-function initializeStats() {
-    // Get or create visitor stats from localStorage
-    let stats = JSON.parse(localStorage.getItem('visitorStats') || '{}');
-
-    // Initialize default stats
-    if (!stats.totalVisits) stats.totalVisits = 0;
-    if (!stats.uniqueVisitors) stats.uniqueVisitors = new Set();
-    if (!stats.pageViews) stats.pageViews = 0;
-    if (!stats.sessions) stats.sessions = [];
-
-    return stats;
-}
-
-// Update visitor stats
-function updateStats() {
-    let stats = initializeStats();
-    const visitorId = getVisitorId();
-    const now = new Date();
-
-    // Update counts
-    stats.totalVisits++;
-    stats.pageViews++;
-
-    // Track unique visitors
-    if (!stats.uniqueVisitors.includes) {
-        stats.uniqueVisitors = Array.from(new Set(stats.uniqueVisitors));
-    }
-    if (!stats.uniqueVisitors.includes(visitorId)) {
-        stats.uniqueVisitors.push(visitorId);
-    }
-
-    // Track session
-    stats.sessions.push({
-        id: visitorId,
-        timestamp: now.toISOString(),
-        page: 'mirror'
-    });
-
-    // Keep only last 1000 sessions
-    if (stats.sessions.length > 1000) {
-        stats.sessions = stats.sessions.slice(-1000);
-    }
-
-    localStorage.setItem('visitorStats', JSON.stringify(stats));
-    return stats;
-}
-
-// Generate visitor ID
-function getVisitorId() {
-    let visitorId = localStorage.getItem('visitorId');
-    if (!visitorId) {
-        visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        localStorage.setItem('visitorId', visitorId);
-    }
-    return visitorId;
-}
+// Note: This tool does not record or store any visitor statistics
+// All analysis is performed locally in your browser
 
 // Generate canvas fingerprint
 function getCanvasFingerprint() {
@@ -334,46 +279,73 @@ async function checkThirdPartyCookies() {
     }
 }
 
-// Calculate average session duration
-function calculateAvgDuration(sessions) {
-    if (sessions.length < 2) return '0m';
 
-    const durations = [];
-    for (let i = 1; i < sessions.length; i++) {
-        const prev = new Date(sessions[i-1].timestamp);
-        const curr = new Date(sessions[i].timestamp);
-        const diff = Math.abs(curr - prev) / 1000 / 60; // minutes
-        if (diff < 60) durations.push(diff); // Only count sessions < 1 hour
-    }
-
-    if (durations.length === 0) return '0m';
-    const avg = durations.reduce((a, b) => a + b, 0) / durations.length;
-    return Math.round(avg) + 'm';
-}
-
-// Fetch IP and location information
+// Fetch IP and location information with IPv4/IPv6 detection
 async function fetchIPInfo() {
     try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
+        // Fetch both IPv4 and IPv6 if available
+        const [ipv4Response, ipv6Response, locationResponse] = await Promise.allSettled([
+            fetch('https://ipv4.icanhazip.com/').then(r => r.text()),
+            fetch('https://ipv6.icanhazip.com/').then(r => r.text()),
+            fetch('https://ipapi.co/json/')
+        ]);
 
-        document.getElementById('ip-address').textContent = data.ip || 'Unknown';
-        document.getElementById('location').textContent =
-            `${data.city || 'Unknown'}, ${data.region || ''} ${data.country_name || ''}`.trim();
-        document.getElementById('isp').textContent = data.org || 'Unknown';
+        // Handle IPv4
+        if (ipv4Response.status === 'fulfilled') {
+            document.getElementById('ipv4-address').textContent = ipv4Response.value.trim();
+        } else {
+            document.getElementById('ipv4-address').textContent = 'Not detected';
+        }
+
+        // Handle IPv6
+        if (ipv6Response.status === 'fulfilled') {
+            document.getElementById('ipv6-address').textContent = ipv6Response.value.trim();
+        } else {
+            document.getElementById('ipv6-address').textContent = 'Not available';
+        }
+
+        // Handle location data
+        if (locationResponse.status === 'fulfilled') {
+            const data = await locationResponse.value.json();
+            document.getElementById('location').textContent =
+                `${data.city || 'Unknown'}, ${data.region || ''} ${data.country_name || ''}`.trim();
+            document.getElementById('isp').textContent = data.org || 'Unknown';
+        } else {
+            document.getElementById('location').textContent = 'Unable to fetch';
+            document.getElementById('isp').textContent = 'Unable to fetch';
+        }
+
     } catch (error) {
-        document.getElementById('ip-address').textContent = 'Unable to fetch';
+        document.getElementById('ipv4-address').textContent = 'Detection failed';
+        document.getElementById('ipv6-address').textContent = 'Detection failed';
         document.getElementById('location').textContent = 'Unable to fetch';
         document.getElementById('isp').textContent = 'Unable to fetch';
     }
 }
 
+// Detect DNS servers (approximation)
+function detectDNSServers() {
+    // This is a limited detection since browsers don't expose actual DNS servers
+    const dnsHints = [];
+
+    if (navigator.connection) {
+        if (navigator.connection.effectiveType) {
+            dnsHints.push('System DNS');
+        }
+    }
+
+    // Check for common DNS indicators
+    if (navigator.onLine) {
+        dnsHints.push('Active DNS resolution');
+    }
+
+    document.getElementById('dns-servers').textContent =
+        dnsHints.length > 0 ? dnsHints.join(', ') : 'Cannot detect directly';
+}
+
 // Initialize page
 async function initializePage() {
     const startTime = performance.now();
-
-    // Update stats
-    const stats = updateStats();
 
     // Get comprehensive browser information
     const browserInfo = getDetailedBrowserInfo();
@@ -466,18 +438,13 @@ async function initializePage() {
     const loadTime = performance.now() - startTime;
     document.getElementById('load-time').textContent = `${Math.round(loadTime)}ms`;
 
-    // Display stats
-    document.getElementById('total-visits').textContent = stats.totalVisits;
-    document.getElementById('unique-visitors').textContent =
-        Array.isArray(stats.uniqueVisitors) ? stats.uniqueVisitors.length : 0;
-    document.getElementById('page-views').textContent = stats.pageViews;
-    document.getElementById('avg-duration').textContent =
-        calculateAvgDuration(stats.sessions);
+    // Update last updated time
     document.getElementById('last-update').textContent =
         new Date().toLocaleString();
 
-    // Fetch IP info and audio fingerprint asynchronously
+    // Fetch IP info and detect DNS asynchronously
     fetchIPInfo();
+    detectDNSServers();
 
     // Generate audio fingerprint (async)
     getAudioFingerprint().then(fingerprint => {
@@ -493,206 +460,242 @@ async function initializePage() {
     });
 }
 
-// === NEW COOL FUNCTIONALITIES ===
+// === ENHANCED EDUCATIONAL MIRROR FUNCTIONALITY ===
 
-// 1. Live Threat Analysis
-function initializeThreatAnalysis() {
-    setTimeout(() => {
-        const threatScore = calculateThreatScore();
-        const threatLevel = document.getElementById('threat-level');
-        const scoreElement = document.getElementById('threat-score');
-        const labelElement = document.getElementById('threat-label');
+// Privacy Health Assessment System
+class PrivacyHealthChecker {
+    constructor() {
+        this.score = 100; // Start with perfect score
+        this.recommendations = [];
+        this.issues = [];
+    }
 
-        scoreElement.textContent = threatScore + '/100';
+    analyzePrivacyHealth(browserData) {
+        this.score = 100;
+        this.recommendations = [];
+        this.issues = [];
 
-        if (threatScore < 30) {
-            labelElement.textContent = 'Low Risk';
-            threatLevel.style.borderColor = '#00ff00';
-        } else if (threatScore < 70) {
-            labelElement.textContent = 'Medium Risk';
-            threatLevel.style.borderColor = '#ffaa00';
-        } else {
-            labelElement.textContent = 'High Risk';
-            threatLevel.style.borderColor = '#ff0000';
+        // Analyze various privacy factors
+        this.checkDoNotTrack(browserData);
+        this.checkCookies(browserData);
+        this.checkWebRTC(browserData);
+        this.checkFingerprinting(browserData);
+        this.checkBrowserSecurity(browserData);
+        this.checkStorageAPIs(browserData);
+
+        return {
+            score: Math.max(0, this.score),
+            level: this.getPrivacyLevel(),
+            recommendations: this.recommendations,
+            issues: this.issues
+        };
+    }
+
+    checkDoNotTrack(data) {
+        if (!navigator.doNotTrack || navigator.doNotTrack !== '1') {
+            this.score -= 10;
+            this.addRecommendation('⚠️', 'Enable "Do Not Track" in browser settings', 'Browser Settings → Privacy → Do Not Track', 'medium');
+        }
+    }
+
+    checkCookies(data) {
+        if (navigator.cookieEnabled) {
+            this.score -= 15;
+            this.addRecommendation('🍪', 'Consider disabling third-party cookies', 'Browser Settings → Privacy → Block third-party cookies', 'high');
+        }
+    }
+
+    checkWebRTC(data) {
+        if (data.webrtcLeak) {
+            this.score -= 25;
+            this.addRecommendation('🚨', 'WebRTC is leaking your real IP address', 'Disable WebRTC or use VPN with WebRTC protection', 'critical');
+        }
+    }
+
+    checkFingerprinting(data) {
+        if (data.uniqueFingerprint) {
+            this.score -= 20;
+            this.addRecommendation('👁️', 'Your browser has a unique fingerprint', 'Use Tor Browser or fingerprint protection extensions', 'high');
+        }
+    }
+
+    checkBrowserSecurity(data) {
+        if (location.protocol !== 'https:') {
+            this.score -= 15;
+            this.addRecommendation('🔓', 'You\'re not using HTTPS', 'Always use HTTPS websites for secure communication', 'high');
+        }
+    }
+
+    checkStorageAPIs(data) {
+        let storageAPIs = 0;
+        if (localStorage) storageAPIs++;
+        if (sessionStorage) storageAPIs++;
+        if (window.indexedDB) storageAPIs++;
+
+        if (storageAPIs >= 3) {
+            this.score -= 10;
+            this.addRecommendation('💾', 'Multiple storage APIs available for tracking', 'Regularly clear browser data and use privacy extensions', 'medium');
+        }
+    }
+
+    addRecommendation(icon, issue, action, severity) {
+        this.recommendations.push({ icon, issue, action, severity });
+    }
+
+    getPrivacyLevel() {
+        if (this.score >= 80) return { level: 'excellent', label: 'Excellent Privacy', color: '#00ff00' };
+        if (this.score >= 60) return { level: 'good', label: 'Good Privacy', color: '#90ff00' };
+        if (this.score >= 40) return { level: 'fair', label: 'Fair Privacy', color: '#ffaa00' };
+        if (this.score >= 20) return { level: 'poor', label: 'Poor Privacy', color: '#ff6600' };
+        return { level: 'critical', label: 'Critical Issues', color: '#ff0000' };
+    }
+}
+
+// WebRTC Leak Detection
+async function detectWebRTCLeaks() {
+    return new Promise((resolve) => {
+        let hasWebRTC = false;
+        let localIPs = [];
+
+        // Check if WebRTC is available
+        if (!window.RTCPeerConnection && !window.webkitRTCPeerConnection && !window.mozRTCPeerConnection) {
+            resolve({ leak: false, disabled: true });
+            return;
         }
 
-        // Update security metrics
-        document.getElementById('connection-security').textContent =
-            location.protocol === 'https:' ? 'Secure (HTTPS)' : 'Insecure (HTTP)';
+        try {
+            const RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+            const pc = new RTCPeerConnection({ iceServers: [{ urls: "stun:stun.l.google.com:19302" }] });
 
-        document.getElementById('privacy-score').textContent =
-            `${Math.max(0, 100 - threatScore)}/100`;
+            pc.createDataChannel('');
+            pc.createOffer()
+                .then(offer => pc.setLocalDescription(offer))
+                .catch(err => resolve({ leak: false, error: err.message }));
 
-        document.getElementById('tracking-exposure').textContent =
-            threatScore > 50 ? 'High Exposure' : 'Limited Exposure';
+            pc.onicecandidate = function(event) {
+                if (!event.candidate) {
+                    // Check results after gathering
+                    setTimeout(() => {
+                        resolve({
+                            leak: localIPs.length > 0,
+                            localIPs: localIPs,
+                            hasWebRTC: true
+                        });
+                    }, 100);
+                    return;
+                }
+
+                const candidate = event.candidate.candidate;
+                const ipMatch = candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/);
+
+                if (ipMatch && ipMatch[1]) {
+                    const ip = ipMatch[1];
+                    if (ip.indexOf('192.168.') === 0 || ip.indexOf('10.') === 0 || ip.indexOf('172.') === 0) {
+                        if (localIPs.indexOf(ip) === -1) {
+                            localIPs.push(ip);
+                        }
+                    }
+                }
+            };
+
+            // Timeout after 3 seconds
+            setTimeout(() => {
+                pc.close();
+                resolve({
+                    leak: localIPs.length > 0,
+                    localIPs: localIPs,
+                    hasWebRTC: true,
+                    timeout: true
+                });
+            }, 3000);
+
+        } catch (error) {
+            resolve({ leak: false, error: error.message });
+        }
+    });
+}
+
+// Update Privacy Health Display
+function updatePrivacyHealth(healthData) {
+    const scoreElement = document.getElementById('score-number');
+    const labelElement = document.getElementById('score-label');
+    const statusElement = document.getElementById('health-status');
+    const circleElement = document.getElementById('health-circle');
+    const recommendationsList = document.getElementById('recommendations-list');
+
+    // Update score display
+    scoreElement.textContent = healthData.score;
+    labelElement.textContent = healthData.level.label;
+    statusElement.textContent = `Privacy Score: ${healthData.score}/100`;
+
+    // Update circle color
+    circleElement.style.background = `conic-gradient(${healthData.level.color} ${healthData.score * 3.6}deg, var(--accent-color) ${healthData.score * 3.6}deg)`;
+
+    // Clear loading recommendations
+    recommendationsList.innerHTML = '';
+
+    // Add recommendations
+    if (healthData.recommendations.length === 0) {
+        recommendationsList.innerHTML = `
+            <div class="recommendation-item">
+                <span class="rec-icon">✅</span>
+                <span class="rec-text">Great job! Your privacy settings look good.</span>
+            </div>
+        `;
+    } else {
+        healthData.recommendations.forEach(rec => {
+            const recElement = document.createElement('div');
+            recElement.className = 'recommendation-item';
+            recElement.innerHTML = `
+                <span class="rec-icon">${rec.icon}</span>
+                <div class="rec-text">
+                    <div><strong>${rec.issue}</strong></div>
+                    <div style="margin-top: 5px; font-size: 13px; opacity: 0.8;">${rec.action}</div>
+                </div>
+            `;
+            recommendationsList.appendChild(recElement);
+        });
+    }
+}
+
+// Enhanced initialization with privacy health check
+async function initializeEnhancedMirror() {
+    const privacyChecker = new PrivacyHealthChecker();
+
+    // Detect WebRTC leaks
+    const webrtcData = await detectWebRTCLeaks();
+
+    // Update WebRTC status display
+    const webrtcStatusElement = document.getElementById('webrtc-status');
+    if (webrtcData.disabled) {
+        webrtcStatusElement.textContent = 'Disabled (Secure)';
+        webrtcStatusElement.className = 'webrtc-secure';
+    } else if (webrtcData.leak) {
+        webrtcStatusElement.textContent = `IP Leak Detected (${webrtcData.localIPs.join(', ')})`;
+        webrtcStatusElement.className = 'webrtc-leak';
+    } else if (webrtcData.hasWebRTC) {
+        webrtcStatusElement.textContent = 'Enabled but no local IP leak detected';
+        webrtcStatusElement.className = 'webrtc-secure';
+    } else {
+        webrtcStatusElement.textContent = 'Unable to detect';
+    }
+
+    // Analyze privacy health
+    const browserData = {
+        webrtcLeak: webrtcData.leak,
+        uniqueFingerprint: true // Simplified for now
+    };
+
+    const healthData = privacyChecker.analyzePrivacyHealth(browserData);
+
+    // Update displays
+    setTimeout(() => {
+        updatePrivacyHealth(healthData);
     }, 1500);
-}
-
-function calculateThreatScore() {
-    let score = 0;
-
-    // Fingerprinting factors
-    if (!navigator.doNotTrack || navigator.doNotTrack !== '1') score += 15;
-    if (navigator.cookieEnabled) score += 10;
-    if (localStorage && sessionStorage) score += 10;
-    if (navigator.geolocation) score += 15;
-    if ('Notification' in window) score += 5;
-    if (navigator.hardwareConcurrency > 4) score += 10;
-    if (screen.width > 1920) score += 5;
-    if (navigator.languages.length > 2) score += 10;
-    if (location.protocol !== 'https:') score += 20;
-
-    return Math.min(100, score);
-}
-
-// 2. Real-Time Performance Monitor
-function initializePerformanceMonitor() {
-    const cpuChart = document.getElementById('cpu-chart');
-    const memoryChart = document.getElementById('memory-chart');
-    const networkChart = document.getElementById('network-chart');
-
-    if (cpuChart && memoryChart && networkChart) {
-        drawPerformanceCharts(cpuChart, memoryChart, networkChart);
-        startPerformanceMonitoring();
-    }
-}
-
-function drawPerformanceCharts(cpuCanvas, memoryCanvas, networkCanvas) {
-    // Simple chart drawing for CPU
-    const cpuCtx = cpuCanvas.getContext('2d');
-    cpuCtx.strokeStyle = '#ff00ff';
-    cpuCtx.lineWidth = 2;
-    cpuCtx.beginPath();
-    for (let i = 0; i < 150; i += 5) {
-        const y = 50 + Math.sin(i / 20) * 20 + Math.random() * 10;
-        if (i === 0) cpuCtx.moveTo(i, y);
-        else cpuCtx.lineTo(i, y);
-    }
-    cpuCtx.stroke();
-
-    // Memory chart
-    const memCtx = memoryCanvas.getContext('2d');
-    memCtx.strokeStyle = '#00ffff';
-    memCtx.lineWidth = 2;
-    memCtx.beginPath();
-    for (let i = 0; i < 150; i += 5) {
-        const y = 70 - (i / 150) * 40 + Math.random() * 10;
-        if (i === 0) memCtx.moveTo(i, y);
-        else memCtx.lineTo(i, y);
-    }
-    memCtx.stroke();
-
-    // Network chart
-    const netCtx = networkCanvas.getContext('2d');
-    netCtx.strokeStyle = '#ffaa00';
-    netCtx.lineWidth = 2;
-    netCtx.beginPath();
-    for (let i = 0; i < 150; i += 5) {
-        const y = 50 + Math.cos(i / 15) * 25 + Math.random() * 5;
-        if (i === 0) netCtx.moveTo(i, y);
-        else netCtx.lineTo(i, y);
-    }
-    netCtx.stroke();
-}
-
-function startPerformanceMonitoring() {
-    let frameCount = 0;
-    let lastTime = performance.now();
-
-    function updatePerformanceStats() {
-        frameCount++;
-        const now = performance.now();
-
-        if (now - lastTime >= 1000) {
-            const fps = Math.round((frameCount * 1000) / (now - lastTime));
-            document.getElementById('frame-rate').textContent = fps + 'fps';
-            frameCount = 0;
-            lastTime = now;
-        }
-
-        // Simulated CPU temperature (not actually accessible)
-        const temp = 45 + Math.random() * 20;
-        document.getElementById('cpu-temp').textContent = Math.round(temp) + '°C';
-
-        // Response time simulation
-        const responseTime = 50 + Math.random() * 100;
-        document.getElementById('response-time').textContent = Math.round(responseTime) + 'ms';
-
-        requestAnimationFrame(updatePerformanceStats);
-    }
-
-    updatePerformanceStats();
-}
-
-// 3. Advanced Fingerprint Scanner
-function initializeAdvancedFingerprinting() {
-    setTimeout(() => {
-        calculateUniquenessScore();
-        generateHardwareSignature();
-        analyzeBehavioralPattern();
-        mapNetworkFootprint();
-    }, 2000);
-}
-
-function calculateUniquenessScore() {
-    // Calculate how unique this browser fingerprint is
-    const factors = [
-        navigator.userAgent.length,
-        screen.width * screen.height,
-        navigator.hardwareConcurrency || 1,
-        navigator.deviceMemory || 1,
-        navigator.languages.length,
-        (performance.now() % 1000)
-    ];
-
-    const hash = factors.reduce((acc, val) => ((acc << 5) - acc + val) & 0xffffffff, 0);
-    const uniqueness = Math.abs(hash % 100);
-
-    document.getElementById('uniqueness-score').textContent = uniqueness + '%';
-}
-
-function generateHardwareSignature() {
-    const signature = [
-        (navigator.hardwareConcurrency || 'unknown'),
-        (navigator.deviceMemory ? navigator.deviceMemory + 'GB' : 'unknown'),
-        screen.width + 'x' + screen.height,
-        (window.devicePixelRatio || 1).toFixed(1)
-    ].join('-').toUpperCase().slice(0, 12);
-
-    document.getElementById('hardware-signature').textContent = signature;
-}
-
-function analyzeBehavioralPattern() {
-    const patterns = ['ACTIVE_EXPLORER', 'PRIVACY_FOCUSED', 'POWER_USER', 'CASUAL_BROWSER', 'DEVELOPER_MODE'];
-    let pattern = 'CASUAL_BROWSER';
-
-    if (navigator.doNotTrack === '1') pattern = 'PRIVACY_FOCUSED';
-    else if (navigator.hardwareConcurrency > 8) pattern = 'POWER_USER';
-    else if (navigator.userAgent.includes('Chrome') && navigator.userAgent.includes('Mobile')) pattern = 'ACTIVE_EXPLORER';
-    else if (navigator.webdriver || window.outerWidth - window.innerWidth > 100) pattern = 'DEVELOPER_MODE';
-
-    document.getElementById('behavioral-pattern').textContent = pattern;
-}
-
-function mapNetworkFootprint() {
-    const footprint = [
-        location.protocol.replace(':', '').toUpperCase(),
-        navigator.connection ? navigator.connection.effectiveType || 'UNKNOWN' : 'UNKNOWN',
-        navigator.onLine ? 'ONLINE' : 'OFFLINE'
-    ].join('_');
-
-    document.getElementById('network-footprint').textContent = footprint;
-}
-
-// Initialize new features
-function initializeNewFeatures() {
-    initializeThreatAnalysis();
-    initializePerformanceMonitor();
-    initializeAdvancedFingerprinting();
 }
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializePage();
-    setTimeout(initializeNewFeatures, 500);
+    setTimeout(initializeEnhancedMirror, 1000);
 });

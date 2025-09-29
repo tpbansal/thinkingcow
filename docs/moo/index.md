@@ -1,5 +1,4 @@
 <section class="posts-section">
-    <h2>Writeups</h2>
 
     {% for post in site.posts %}
     <article class="post-item">
