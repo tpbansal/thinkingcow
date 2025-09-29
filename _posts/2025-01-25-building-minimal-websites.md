@@ -235,4 +235,4 @@ Start your next project with constraints: a limited color palette, a single font
 
 ---
 
-*Want to see how minimal this site really is? View the source code and see how much (or little) it takes to create a functional, beautiful website.*
+*Want to see how minimal this site really is? View the source code and see how much (or little) it takes to create a functional website.*
