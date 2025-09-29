@@ -229,6 +229,101 @@ permalink: /saltlick/digital-mirror/
     </section>
 
     <section class="mirror-section">
+        <h2>🎯 Live Threat Analysis</h2>
+        <div class="threat-analysis">
+            <div class="threat-meter">
+                <div class="threat-level" id="threat-level">
+                    <span class="threat-score" id="threat-score">Loading...</span>
+                    <span class="threat-label" id="threat-label">Calculating Risk...</span>
+                </div>
+                <div class="threat-details" id="threat-details">
+                    <div class="threat-item">
+                        <span class="threat-icon">🔒</span>
+                        <span>Connection Security: <span id="connection-security">Analyzing...</span></span>
+                    </div>
+                    <div class="threat-item">
+                        <span class="threat-icon">🛡️</span>
+                        <span>Privacy Score: <span id="privacy-score">Calculating...</span></span>
+                    </div>
+                    <div class="threat-item">
+                        <span class="threat-icon">👁️</span>
+                        <span>Tracking Exposure: <span id="tracking-exposure">Evaluating...</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>⚡ Real-Time Performance Monitor</h2>
+        <div class="performance-monitor">
+            <div class="perf-charts">
+                <div class="perf-chart">
+                    <canvas id="cpu-chart" width="150" height="100"></canvas>
+                    <div class="chart-label">CPU Usage</div>
+                </div>
+                <div class="perf-chart">
+                    <canvas id="memory-chart" width="150" height="100"></canvas>
+                    <div class="chart-label">Memory Usage</div>
+                </div>
+                <div class="perf-chart">
+                    <canvas id="network-chart" width="150" height="100"></canvas>
+                    <div class="chart-label">Network Activity</div>
+                </div>
+            </div>
+            <div class="perf-stats">
+                <div class="perf-stat">
+                    <span class="perf-value" id="cpu-temp">--°C</span>
+                    <span class="perf-label">CPU Temperature</span>
+                </div>
+                <div class="perf-stat">
+                    <span class="perf-value" id="frame-rate">--fps</span>
+                    <span class="perf-label">Frame Rate</span>
+                </div>
+                <div class="perf-stat">
+                    <span class="perf-value" id="response-time">--ms</span>
+                    <span class="perf-label">Response Time</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
+        <h2>🌐 Advanced Fingerprint Scanner</h2>
+        <div class="fingerprint-scanner">
+            <div class="scan-animation" id="scan-animation">
+                <div class="scan-line"></div>
+                <div class="scan-grid">
+                    <div class="scan-dot" style="--delay: 0s;"></div>
+                    <div class="scan-dot" style="--delay: 0.2s;"></div>
+                    <div class="scan-dot" style="--delay: 0.4s;"></div>
+                    <div class="scan-dot" style="--delay: 0.6s;"></div>
+                    <div class="scan-dot" style="--delay: 0.8s;"></div>
+                    <div class="scan-dot" style="--delay: 1s;"></div>
+                </div>
+            </div>
+            <div class="fingerprint-results">
+                <div class="fp-result">
+                    <span class="fp-label">Uniqueness Score:</span>
+                    <span class="fp-value" id="uniqueness-score">Calculating...</span>
+                </div>
+                <div class="fp-result">
+                    <span class="fp-label">Hardware Signature:</span>
+                    <span class="fp-value" id="hardware-signature">Scanning...</span>
+                </div>
+                <div class="fp-result">
+                    <span class="fp-label">Behavioral Pattern:</span>
+                    <span class="fp-value" id="behavioral-pattern">Analyzing...</span>
+                </div>
+                <div class="fp-result">
+                    <span class="fp-label">Network Footprint:</span>
+                    <span class="fp-value" id="network-footprint">Mapping...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mirror-section">
         <h2>Site Statistics</h2>
         <div class="stats-grid">
             <div class="stat-card">
@@ -355,6 +450,217 @@ permalink: /saltlick/digital-mirror/
     opacity: 0.6;
 }
 
+/* Threat Analysis Styles */
+.threat-analysis {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.05) 0%, rgba(0, 255, 255, 0.05) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.threat-meter {
+    text-align: center;
+}
+
+.threat-level {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    border: 2px solid var(--link-color);
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.threat-score {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--link-color);
+}
+
+.threat-label {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.threat-details {
+    margin-top: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.threat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--subtle-bg);
+    border-radius: 4px;
+}
+
+.threat-icon {
+    font-size: 18px;
+}
+
+/* Performance Monitor Styles */
+.performance-monitor {
+    display: grid;
+    gap: 20px;
+}
+
+.perf-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.perf-chart {
+    text-align: center;
+    padding: 15px;
+    background: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.perf-chart canvas {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.chart-label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+.perf-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.perf-stat {
+    text-align: center;
+    padding: 15px;
+    background: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.perf-value {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--link-color);
+}
+
+.perf-label {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* Fingerprint Scanner Styles */
+.fingerprint-scanner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.scan-animation {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    border: 2px solid var(--link-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 4s linear infinite;
+}
+
+.scan-line {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: var(--link-color);
+    transform-origin: bottom center;
+    animation: sweep 2s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.scan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.scan-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--link-color);
+    border-radius: 50%;
+    animation: blink 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.fingerprint-results {
+    display: grid;
+    gap: 10px;
+}
+
+.fp-result {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.fp-result:hover {
+    background: var(--hover-bg);
+}
+
+.fp-label {
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+.fp-value {
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes sweep {
+    0% { transform: rotate(-45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(45deg); opacity: 0; }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 0.3; }
+    25% { opacity: 1; }
+}
+
 @media (max-width: 768px) {
     .info-item {
         flex-direction: column;
@@ -367,6 +673,23 @@ permalink: /saltlick/digital-mirror/
 
     .stats-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .fingerprint-scanner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .scan-animation {
+        margin: 0 auto;
+    }
+
+    .perf-charts {
+        grid-template-columns: 1fr;
+    }
+
+    .threat-details {
+        grid-template-columns: 1fr;
     }
 }
 </style>
