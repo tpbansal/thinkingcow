@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.thinkingcow.dev/sitemap.xml
+
+# Allow crawling of all content
+Allow: /moo/
+Allow: /saltlick/
+Allow: /docs/
+Allow: /assets/
+
+# Disallow build directories
+Disallow: /_site/
+Disallow: /vendor/

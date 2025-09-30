@@ -60,3 +60,14 @@ timezone: UTC
 encoding: utf-8
 future: false
 safe: true
+
+# SEO settings
+google_analytics: G-XXXXXXXXXX
+lang: en
+twitter:
+  username: thinkingcow
+  card: summary_large_image
+
+# Additional SEO
+tagline: "Security Research, Privacy Tools, and Web Development"
+keywords: "security research, privacy tools, web development, browser fingerprinting, digital privacy"

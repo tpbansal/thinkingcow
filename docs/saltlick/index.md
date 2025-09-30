@@ -16,6 +16,19 @@ A browser fingerprinting demonstration tool that shows exactly what information 
 
 For understanding your digital footprint and testing privacy configurations.
 
+### **[Escape Mode](/saltlick/escape-mode)**
+
+A browser-based maze navigation game with procedurally generated challenges and move optimization. Features:
+
+- Procedurally generated mazes using recursive backtracking algorithm
+- Move counter with optimal path calculation and efficiency scoring
+- Progressive difficulty with increasing grid complexity
+- Cross-platform controls (keyboard/touch) and responsive design
+- Local best score tracking and performance analysis
+- Algorithm transparency showing maze generation method
+
+Challenge yourself to find the shortest path through procedurally generated mazes.
+
 
 #### Links & Resources
 
