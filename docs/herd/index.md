@@ -34,7 +34,7 @@ We specialize in software, systems, and security with a strong foundation in ele
         </div>
         <div class="contributor-info">
             <h4>Thinking Cow</h4>
-            <p class="contributor-role">Founder & Lead Developer</p>
+            <p class="contributor-role">Founder & Contributor</p>
             <p class="contributor-bio">Security researcher and software engineer passionate about privacy, minimalism, and open source.</p>
             <div class="contributor-links">
                 <a href="{{ site.social.github }}" target="_blank">GitHub</a>
