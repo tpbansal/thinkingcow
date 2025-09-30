@@ -20,10 +20,10 @@ permalink: /herd/tapasvi/
 
 ## Education
 
+### University of Washington
 **Master of Science - Information Management**
-University of Washington (2016-2018)
-*Specializations: Data Science, Cybersecurity, Business Intelligence*
-GPA: 3.8/4.0
+*August 2016 - June 2018* | Seattle, Washington
+Specializations: *Data Science, Cybersecurity, Business Intelligence*
 
 ## Certifications & Licenses
 
