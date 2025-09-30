@@ -33,10 +33,11 @@ We specialize in software, systems, and security with a strong foundation in ele
             <img id="rotating-cow-small" src="/docs/images/cow1.jpg" alt="Thinking Cow" />
         </div>
         <div class="contributor-info">
-            <h4>Thinking Cow</h4>
+            <h4>Tapasvi</h4>
             <p class="contributor-role">Founder & Contributor</p>
             <p class="contributor-bio">Security researcher and software engineer passionate about privacy, minimalism, and open source.</p>
             <div class="contributor-links">
+                <a href="/herd/tapasvi/">Full Profile</a>
                 <a href="{{ site.social.github }}" target="_blank">GitHub</a>
                 <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
                 <a href="mailto:{{ site.social.email }}">Email</a>
