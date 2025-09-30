@@ -4,8 +4,6 @@ title: Tapasvi Bansal
 permalink: /herd/tapasvi/
 ---
 
-# **Founder & Security Researcher**
-
 ## Professional Experience
 
 ### ClickHouse
