@@ -71,15 +71,21 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="{{ site.favicon | relative_url }}">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1><a href="{{ '/' | relative_url }}" style="color: inherit; text-decoration: none;">{{ site.title }}</a>
-            </h1>
-            <p>{{ site.description }}</p>
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="site-logo">
+                </div>
+                <div class="header-text">
+                    <h1><a href="{{ '/' | relative_url }}" style="color: inherit; text-decoration: none;">{{ site.title }}</a></h1>
+                    <p>{{ site.description }}</p>
+                </div>
+            </div>
         </header>
 
         <nav>
@@ -100,14 +106,6 @@
 
         <footer>
             <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All Rights Reserved. MIT License. </p>
-            {% if site.social %}
-            <div class="social-links">
-                {% if site.social.github %}<a href="{{ site.social.github }}" target="_blank">GitHub</a>{% endif %}
-                {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>{% endif
-                %}
-                {% if site.social.email %}<a href="mailto:{{ site.social.email }}">Email</a>{% endif %}
-            </div>
-            {% endif %}
         </footer>
     </div>
 </body>

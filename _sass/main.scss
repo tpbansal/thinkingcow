@@ -35,10 +35,38 @@ body {
 // Header styles
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
+
+  .header-content {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .header-logo {
+    flex-shrink: 0;
+  }
+
+  .site-logo {
+    height: 180px;
+    width: auto;
+    filter: brightness(0.9);
+    transition: filter 0.2s ease;
+
+    &:hover {
+      filter: brightness(1);
+    }
+  }
+
+  .header-text {
+    text-align: center;
+  }
 
   h1 {
-    font-size: 30px;
+    font-size: 50px;
     margin-bottom: 10px;
     font-weight: normal;
   }
@@ -101,7 +129,8 @@ nav {
     line-height: 1.6;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin: 15px 0;
     padding-left: 20px;
 
@@ -265,8 +294,24 @@ footer {
     font-size: 14px;
   }
 
-  header h1 {
-    font-size: 24px;
+  header {
+    .header-content {
+      flex-direction: column;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .site-logo {
+      height: 150px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
   }
 
   .connect-links {
@@ -282,10 +327,34 @@ footer {
   margin: 15px 0;
   overflow-x: auto;
 
-  .c { color: #75715e; } // Comment
-  .k { color: #66d9ef; } // Keyword
-  .s { color: #e6db74; } // String
-  .n { color: var(--text-color); } // Name
-  .o { color: #f92672; } // Operator
-  .p { color: var(--text-color); } // Punctuation
+  .c {
+    color: #75715e;
+  }
+
+  // Comment
+  .k {
+    color: #66d9ef;
+  }
+
+  // Keyword
+  .s {
+    color: #e6db74;
+  }
+
+  // String
+  .n {
+    color: var(--text-color);
+  }
+
+  // Name
+  .o {
+    color: #f92672;
+  }
+
+  // Operator
+  .p {
+    color: var(--text-color);
+  }
+
+  // Punctuation
 }

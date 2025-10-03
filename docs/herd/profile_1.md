@@ -16,7 +16,7 @@ permalink: /herd/tapasvi/
 
 ### SAP Labs
 **Senior DevSecOps Engineer**
-*June 2017 - Jan 2021* | Seattle, Washington
+*June 2017 - Jan 2021* | Seattle, United States
 
 ## Education
 
@@ -270,7 +270,7 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 - Outdoor adventures (hiking & camping)
 - World travel and cultural exploration
 - Martial arts (Karate Shito Ryu - Brown Belt)
-- Board games and strategy games
+- Board games
 - Cooking and culinary exploration
 
 ---

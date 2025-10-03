@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 <div class="cow-image-container">
-    <img id="rotating-cow" src="/docs/images/cow1.jpg" alt="Thinking Cow" />
+    <img id="rotating-cow" src="/docs/images/cow0.jpg" alt="Thinking Cow" />
 </div>
 
 ## Who Are We?
@@ -195,6 +195,7 @@ Security challenges, vulnerability research, and educational content focused on 
 <script>
 (function() {
     const cowImages = [
+        '/docs/images/cow0.jpg',
         '/docs/images/cow1.jpg',
         '/docs/images/cow2.jpg',
         '/docs/images/cow3.jpg',

@@ -1,4 +1,4 @@
-title: Thinking Cow
+title: thinking cow
 description: A panoramic chew on technology and human life.
 url: https://www.thinkingcow.dev
 baseurl: ""
@@ -60,6 +60,10 @@ timezone: UTC
 encoding: utf-8
 future: false
 safe: true
+
+# Logo settings
+logo: /docs/images/logo5.png
+favicon: /docs/images/logo5.png
 
 # SEO settings
 google_analytics: G-XXXXXXXXXX
