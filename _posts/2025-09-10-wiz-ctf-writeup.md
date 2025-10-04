@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Wiz CTF July 2025: Contain Me If You Can - A PostgreSQL Container Escape"
-date: 2025-08-10
+date: 2025-09-10
 categories: [ctf, security]
 tags: [ctf, security, container-escape, postgresql, docker, pentesting]
 excerpt: "Exploiting network traffic capture, PostgreSQL command execution, and container misconfigurations to achieve a complete container escape and access the host filesystem."
