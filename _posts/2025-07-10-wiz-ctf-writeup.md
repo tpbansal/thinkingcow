@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Wiz CTF June 2025: SSRF & AWS Credential Escalation"
+title: "Wiz CTF June 2025: Perimeter Leak - A SSRF & AWS Credential Escalation"
 date: 2025-07-10
 categories: [ctf, security]
 tags: [ctf, security, ssrf, aws, cloud-security, pentesting]
