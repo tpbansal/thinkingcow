@@ -3,6 +3,7 @@ layout: post
 title: "Wiz CTF June 2025: SSRF & AWS Credential Escalation"
 date: 2025-07-10
 categories: [ctf, security]
+tags: [ctf, security, ssrf, aws, cloud-security, pentesting]
 excerpt: "Exploiting Server-Side Request Forgery (SSRF) through Spring Boot Actuator to access AWS services, bypass data perimeter controls, and extract protected files using presigned URLs."
 ---
 
