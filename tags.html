@@ -1,0 +1,128 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+
+<h1>Browse by Tag</h1>
+
+<div class="tags-cloud">
+{% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+
+{% for tag in all_tags %}
+  {% if tag != "" %}
+    <a href="#{{ tag | slugify }}" class="tag-link">{{ tag }}</a>
+  {% endif %}
+{% endfor %}
+</div>
+
+<div class="tags-list">
+{% for tag in all_tags %}
+  {% if tag != "" %}
+  <section id="{{ tag | slugify }}" class="tag-section">
+    <h2>{{ tag }}</h2>
+    <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.tags contains tag %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+{% endfor %}
+</div>
+
+<style>
+.tags-cloud {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-secondary, rgba(255, 255, 255, 0.02));
+}
+
+.tag-link {
+  display: inline-block;
+  margin: 5px 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.tag-link:hover {
+  background: var(--link-color);
+  color: var(--bg-color);
+  border-color: var(--link-color);
+}
+
+.tags-list {
+  margin-top: 40px;
+}
+
+.tag-section {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tag-section:last-child {
+  border-bottom: none;
+}
+
+.tag-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: var(--link-color);
+  text-transform: lowercase;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list li {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.post-list a {
+  flex: 1;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.post-list a:hover {
+  color: var(--link-color);
+}
+
+.post-list .post-date {
+  font-size: 11px;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .post-list li {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .post-list .post-date {
+    font-size: 10px;
+  }
+}
+</style>
