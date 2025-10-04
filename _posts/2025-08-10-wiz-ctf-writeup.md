@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Wiz CTF August 2025: PostgreSQL Container Escape"
+title: "Wiz CTF July 2025: PostgreSQL Container Escape"
 date: 2025-08-10
 categories: [ctf, security]
 tags: [ctf, security, container-escape, postgresql, docker, pentesting]
