@@ -34,14 +34,8 @@ We specialize in software, systems, and security with a strong foundation in ele
         </div>
         <div class="contributor-info">
             <h4>Tapasvi</h4>
-            <p class="contributor-role">Founder & Contributor</p>
+            <p class="contributor-role">Founder & Contributor | <a href="/herd/tapasvi/">Profile</a></p>
             <p class="contributor-bio">Security researcher and software engineer passionate about privacy, minimalism, and open source.</p>
-            <div class="contributor-links">
-                <a href="/herd/tapasvi/">Full Profile</a>
-                <a href="{{ site.social.github }}" target="_blank">GitHub</a>
-                <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
-                <a href="mailto:{{ site.social.email }}">Email</a>
-            </div>
         </div>
     </div>
 
@@ -132,6 +126,17 @@ Security challenges, vulnerability research, and educational content focused on 
     opacity: 0.8;
     margin: 0 0 10px 0;
     font-style: italic;
+}
+
+.contributor-role a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contributor-role a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
 .contributor-bio, .contribute-info p {

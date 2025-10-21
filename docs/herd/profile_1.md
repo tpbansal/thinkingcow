@@ -4,6 +4,37 @@ title: Tapasvi Bansal
 permalink: /herd/tapasvi/
 ---
 
+<div class="profile-links">
+    <a href="{{ site.social.github }}" target="_blank">GitHub</a>
+    <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
+    <a href="mailto:{{ site.social.email }}">Email</a>
+</div>
+
+<style>
+.profile-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.profile-links a {
+    color: var(--link-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.profile-links a:hover {
+    color: var(--link-hover-color);
+    border-color: var(--link-color);
+    background-color: rgba(255, 0, 255, 0.1);
+}
+</style>
+
 ## Introduction
 
 I specialize in software systems security with a strong foundation in electronic systems, software engineering, and data science. With seasoned global experience and a commitment to continuous learning, I adapt to the evolving demands of technology and industry.
@@ -17,7 +48,7 @@ From high-growth startups to global enterprises, I thrive in dynamic environment
 ## Professional Experience
 
 ### ClickHouse
-**Software Security Engineer**
+**Software Security Engineer**<br>
 *Mar 2023 - Aug 2025* | 2 yrs 6 mos | Amsterdam, North Holland, Netherlands
 
 Tapped to join the founding security team in Amsterdam, I developed software security solutions (auth*, o11y, encryption) for modern distributed database systems while safeguarding multi-cloud infrastructure across AWS, GCP, and Azure. My contributions focus on strengthening core and systemic security across infrastructure, people, and products for column-oriented OLAP/Database systems.
@@ -31,7 +62,7 @@ I served as the **Incident Response Lead (ICL)** for ClickHouse Cloud, where I o
 ---
 
 ### The LEGO Group
-**Senior Software Security Engineer**
+**Senior Software Security Engineer**<br>
 *Feb 2021 - Feb 2023* | 2 yrs 1 mos | Billund Municipality, Region of Southern Denmark, Denmark
 
 Brought into LEGO HQ in Denmark to improve the security posture of LEGO Group's hybrid cloud environment and industrial systems (ICT) across manufacturing, logistics, and supply chain. Reporting to a Senior Director, part of the Technology Transformation Team. My efforts initially focused on innovation and improving security on a global Kubernetes footprint and refining reusable cloud security controls. Later transitioned to LEGO's Digital Security Engineering Team to scale security programs across the organization.
@@ -50,10 +81,10 @@ Brought into LEGO HQ in Denmark to improve the security posture of LEGO Group's 
 ---
 
 ### SAP Labs
-**Senior DevSecOps Engineer**
+**Senior DevSecOps Engineer**<br>
 *June 2018 - Jan 2021* | 2 yrs 8 mos | Seattle, Washington, United States
 
-*SAP Labs, LLC, Center of Excellence | Global Multi-Cloud Services (AWS, Azure, GCP, AliCloud)*
+*SAP Labs, LLC, Center of Excellence | Global Multi-Cloud Services (AWS, Azure, GCP, AliCloud)*<br>
 *Reporting to the VP of Multi-Cloud Services*
 
 As a core member of the Multi-Cloud Security team, I significantly contributed to and led three major, organization-wide initiatives for SAP's 2020 security transformation, driving one of the largest security efforts in SAP's history.
@@ -68,7 +99,9 @@ As a core member of the Multi-Cloud Security team, I significantly contributed t
 
 **Technologies & Tools:** Python, R, Shell Scripting, SQL, Ruby, JSON, YAML, HCL, Git/Github, Jenkins/Azure DevOps, AWS, Azure, GCP, Alibaba Cloud, JIRA, Cloudhealth, Docker, Kubernetes (GKE, EKS), Chef Inspec, Terraform, Splunk/ELK, Pagerduty, PrismaCloud, Twistlock, Dome9
 
-#### DevSecOps Engineer
+---<br>
+
+#### DevSecOps Engineer<br>
 *Aug 2018 - Jan 2020* | 1 yr 6 mos | Seattle, Washington, United States
 
 Recruited as a foundational Security Engineering Driver for SAP's initial Public Cloud Transformation. As the first engineer on the team, I designed and developed our DevSecOps approach, implementing security solutions across multi-cloud infrastructure with over $1 billion in yearly public cloud spending and driving critical organizational-level initiatives.
@@ -81,9 +114,9 @@ Recruited as a foundational Security Engineering Driver for SAP's initial Public
 
 **Technologies & Tools:** Python, R, Shell Scripting, SQL, Ruby, JSON, YAML, HCL, Git, Github CI, AWS, Azure, GCP, Alibaba Cloud, JIRA, RightScale, Docker, Terraform, Splunk/ELK, Pagerduty, PrismaCloud (Evident.io + Redlock+), Twistlock, Dome9
 
----
+---<br>
 
-#### Cybersecurity and Privacy Engineer (SAP Concur)
+#### Cybersecurity and Privacy Engineer (SAP Concur)<br>
 *Jun 2017 - Jul 2018* | 1 yr 2 mos | Bellevue, Washington, United States
 
 Started as an SAP iXP Intern. Continued as a co-op student employee at the SAP Concur HQ. A late-stage B2B high-growth startup (previously Concur) for Travel & Expense management.
@@ -99,8 +132,8 @@ Started as an SAP iXP Intern. Continued as a co-op student employee at the SAP C
 ## Education
 
 ### University of Washington
-**Master of Science - Information Management**
-*August 2016 - June 2018* | Seattle, Washington
+**Master of Science - Information Management**<br>
+*August 2016 - June 2018* | Seattle, Washington<br>
 **Specializations:** Data Science, Cybersecurity, Business Intelligence
 
 ---
@@ -262,6 +295,7 @@ Worked as the first DevSecOps Engineer on the team. Cloud Security Configuration
 **Skills:** Team Leadership, Distributed Systems, Communication, DevOps, Infrastructure as Code (IaC), Network Security, Security, Engineering Management, Python, Leadership, Problem Solving, Cybersecurity, Cross-functional Team Leadership, Security Operations
 
 ---
+---
 
 ## Academic & Research Projects
 
@@ -309,6 +343,7 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 **Skills:** Statistics, Communication, Research, Statistical Data Analysis
 
 ---
+---
 
 ## Professional Training & Courses
 
@@ -318,6 +353,7 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 - **ICS/OT Threat Detection** | Paralus LLC, The LEGO Group
 - **Intermediate API Development - Pluralsight Live** | The LEGO Group
 
+---
 ---
 
 ## University Coursework
@@ -339,6 +375,7 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 - Internship - Coop (IMT 590)
 
 ---
+---
 
 ## Research Interests
 
@@ -347,6 +384,7 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 - Open source software
 - Privacy & Democracy preserving technologies
 
+---
 ---
 
 ## Personal Interests
