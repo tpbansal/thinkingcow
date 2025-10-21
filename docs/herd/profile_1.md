@@ -33,15 +33,538 @@ permalink: /herd/tapasvi/
     border-color: var(--link-color);
     background-color: rgba(255, 0, 255, 0.1);
 }
+
+/* Interactive Introduction Styles */
+.intro-hero {
+    margin: 30px 0;
+}
+
+.intro-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--link-color);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--link-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.intro-map {
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 15px auto;
+}
+
+.world-map {
+    width: 100%;
+    height: auto;
+}
+
+.location-marker {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.location-marker:hover {
+    opacity: 1;
+}
+
+.journey-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.journey-text strong {
+    color: var(--link-color);
+}
+
+.intro-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.highlight-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--link-color);
+}
+
+.highlight-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.highlight-content strong {
+    display: block;
+    color: var(--link-color);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.highlight-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+/* Dynamic Visualization Styles */
+.dynamic-viz-container {
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.viz-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.viz-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.viz-btn:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+    background-color: rgba(255, 0, 255, 0.05);
+}
+
+.viz-btn.active {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+    color: #000;
+    font-weight: bold;
+}
+
+.viz-display {
+    position: relative;
+    min-height: 400px;
+}
+
+.viz-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.viz-panel.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.world-map-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.location-pin {
+    cursor: pointer;
+}
+
+.location-pin:hover circle:first-child {
+    r: 10;
+}
+
+/* Locations Timeline Styles */
+.locations-timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.location-card {
+    background-color: rgba(255, 0, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    min-width: 220px;
+    max-width: 280px;
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--link-color);
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2);
+}
+
+.location-flag {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.location-details h3 {
+    color: var(--link-color);
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.location-years {
+    color: var(--text-color);
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 5px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.location-org {
+    color: var(--text-color);
+    font-size: 13px;
+    margin: 8px 0;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.location-role {
+    color: var(--text-color);
+    font-size: 12px;
+    margin: 10px 0 0 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.timeline-arrow {
+    font-size: 32px;
+    color: var(--link-color);
+    opacity: 0.5;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+/* Word Cloud Styles */
+.word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 40px 20px;
+    min-height: 350px;
+}
+
+.cloud-word {
+    display: inline-block;
+    font-weight: bold;
+    opacity: 0;
+    animation: wordFadeIn 0.8s ease forwards;
+    transition: all 0.3s ease;
+    cursor: default;
+    padding: 5px 10px;
+}
+
+.cloud-word:hover {
+    transform: scale(1.2);
+    opacity: 1 !important;
+}
+
+@keyframes wordFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    to {
+        opacity: 0.85;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .intro-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-text {
+        font-size: 12px;
+    }
+
+    .viz-controls {
+        flex-direction: column;
+    }
+
+    .viz-btn {
+        width: 100%;
+    }
+
+    .word-cloud {
+        gap: 10px;
+        padding: 20px 10px;
+    }
+
+    .cloud-word {
+        font-size: 0.8em !important;
+    }
+}
 </style>
 
 ## Introduction
 
-I specialize in software systems security with a strong foundation in electronic systems, software engineering, and data science. With seasoned global experience and a commitment to continuous learning, I adapt to the evolving demands of technology and industry.
+<div class="intro-hero">
+    <div class="intro-stats">
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Global Tech Hubs</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15M+</div>
+            <div class="stat-label">Cloud Assets Secured</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">500K+</div>
+            <div class="stat-label">Machines Protected</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">9+</div>
+            <div class="stat-label">Industry Experience Years</div>
+        </div>
+    </div>
 
-I tackle complex engineering and business challenges with a data-driven approach, aligning security, performance, and innovation. Collaboration is key to my work, ensuring technology meets strategic and technical needs.
+    <div class="dynamic-viz-container">
+        <div class="viz-controls">
+            <button class="viz-btn active" data-viz="locations">Locations</button>
+            <button class="viz-btn" data-viz="companies">Companies</button>
+            <button class="viz-btn" data-viz="roles">Roles</button>
+            <button class="viz-btn" data-viz="technologies">Technologies</button>
+        </div>
 
-From high-growth startups to global enterprises, I thrive in dynamic environments, embracing challenges and driving solutions that enhance security, scalability, and impact.
+        <div class="viz-display">
+            <!-- Locations View -->
+            <div class="viz-panel active" id="viz-locations">
+                <div class="locations-timeline">
+                    <div class="location-card" style="animation-delay: 0s;">
+                        <div class="location-flag">🇺🇸</div>
+                        <div class="location-details">
+                            <h3>Seattle, US</h3>
+                            <p class="location-years">2016 - 2021</p>
+                            <p class="location-org">SAP • University of Washington</p>
+                            <div class="location-role">DevSecOps Engineer, Graduate Student</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-arrow">→</div>
+
+                    <div class="location-card" style="animation-delay: 0.2s;">
+                        <div class="location-flag">🇩🇰</div>
+                        <div class="location-details">
+                            <h3>Billund, Denmark</h3>
+                            <p class="location-years">2021 - 2023</p>
+                            <p class="location-org">LEGO Group</p>
+                            <div class="location-role">Senior Software Security Engineer</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-arrow">→</div>
+
+                    <div class="location-card" style="animation-delay: 0.4s;">
+                        <div class="location-flag">🇳🇱</div>
+                        <div class="location-details">
+                            <h3>Amsterdam, Netherlands</h3>
+                            <p class="location-years">2023 - 2025</p>
+                            <p class="location-org">ClickHouse</p>
+                            <div class="location-role">Software Security Engineer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Companies Word Cloud -->
+            <div class="viz-panel" id="viz-companies">
+                <div class="word-cloud" id="companies-cloud"></div>
+            </div>
+
+            <!-- Roles Word Cloud -->
+            <div class="viz-panel" id="viz-roles">
+                <div class="word-cloud" id="roles-cloud"></div>
+            </div>
+
+            <!-- Technologies Word Cloud -->
+            <div class="viz-panel" id="viz-technologies">
+                <div class="word-cloud" id="tech-cloud"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Data for word clouds
+    const techData = [
+        {text: 'Linux', size: 40}, {text: 'Kubernetes', size: 38}, {text: 'Databases', size: 36}, {text: 'AWS', size: 38}, {text: 'Azure', size: 36},
+        {text: 'GCP', size: 34}, {text: 'Python', size: 35}, {text: 'Terraform', size: 32},
+        {text: 'Docker', size: 30}, {text: 'ArgoCD', size: 28}, {text: 'GitHub Actions', size: 26},
+        {text: 'Prometheus', size: 24}, {text: 'Grafana', size: 22}, {text: 'Helm', size: 24},
+        {text: 'Okta', size: 20}, {text: 'ZeroTrust', size: 26}, {text: 'Tailscale', size: 22}, {text: 'Wiz', size: 22}, {text: 'Sysdig/Falco', size: 22}, {text: 'Claude', size: 22},
+        {text: 'Elastic', size: 22}, {text: 'Pagerduty', size: 18}, 
+        {text: 'Go', size: 24}, {text: 'SQL', size: 20}, {text: 'Bash', size: 18},
+        {text: 'Lambda', size: 22}, {text: 'IAM', size: 20}, {text: 'SIEM', size: 24},
+        {text: 'Wiz', size: 18}, {text: 'Falco', size: 18}, {text: 'SentinelOne', size: 20}, {text: 'Splunk', size: 20},
+    ];
+
+    const companiesData = [
+        {text: 'SAP Labs', size: 38}, {text: 'ClickHouse', size: 36}, {text: 'the LEGO Group', size: 36},
+        {text: 'University of Washington', size: 28}, {text: 'SAP Concur', size: 24}
+    ];
+
+    const rolesData = [
+        {text: 'Software Security Engineer', size: 38}, {text: 'Incident Response Lead', size: 32},
+        {text: 'Cybersecurity Specialist', size: 32}, {text: 'Platform Architect', size: 30},
+        {text: 'Cloud Security Specialist', size: 34}, {text: 'Infrastructure Security Engineer', size: 28},
+        {text: 'Zero Trust Architect', size: 26}, {text: 'Software Engineer', size: 24},
+        {text: 'Threat Intelligence Analyst', size: 22}, {text: 'Security Researcher', size: 26},
+        {text: 'DevSecOps Engineer', size: 20}, {text: 'IAM Engineer', size: 22},
+        {text: 'Data Analyst', size: 28}, {text: 'SIEM Architect', size: 24},
+        {text: 'Vulnerability Management Engineer', size: 22}, {text: 'Data Engineer', size: 28}
+    ];
+
+    function createWordCloud(containerId, data) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = '';
+        const colors = ['var(--link-color)', 'var(--link-hover-color)', '#ff00ff', '#ff66ff', '#cc00cc'];
+
+        data.forEach((item, index) => {
+            const word = document.createElement('span');
+            word.className = 'cloud-word';
+            word.textContent = item.text;
+            word.style.fontSize = item.size + 'px';
+            word.style.color = colors[index % colors.length];
+            word.style.animationDelay = (index * 0.1) + 's';
+            container.appendChild(word);
+        });
+    }
+
+    // Initialize word clouds
+    createWordCloud('tech-cloud', techData);
+    createWordCloud('companies-cloud', companiesData);
+    createWordCloud('roles-cloud', rolesData);
+
+    // Visualization switching
+    const vizBtns = document.querySelectorAll('.viz-btn');
+    const vizPanels = document.querySelectorAll('.viz-panel');
+
+    vizBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetViz = this.dataset.viz;
+
+            vizBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            vizPanels.forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.id === 'viz-' + targetViz) {
+                    panel.classList.add('active');
+                }
+            });
+        });
+    });
+})();
+</script>
 
 ---
 
