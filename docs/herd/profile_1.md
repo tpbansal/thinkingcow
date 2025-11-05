@@ -1,7 +1,13 @@
 ---
 layout: page
-title: Tapasvi Bansal
+title: |
+    Tapasvi Bansal
 permalink: /herd/tapasvi/
+description: "Tapasvi Bansal is a software security engineer specializing in cloud security, product security, Kubernetes, DevSecOps, and zero trust architecture. Previously at ClickHouse, LEGO Group, and SAP Labs."
+keywords: "Tapasvi Bansal, cloud security engineer, DevSecOps, Kubernetes security, AWS security, Azure security, GCP security, zero trust, ClickHouse, LEGO, SAP, cybersecurity expert, incident response, cloud architecture"
+author: "Tapasvi Bansal"
+image: /docs/images/cow1.jpg
+canonical_url: https://www.thinkingcow.dev/herd/tapasvi/
 ---
 
 <div class="profile-links">
@@ -11,6 +17,18 @@ permalink: /herd/tapasvi/
 </div>
 
 <style>
+/* Profile Logo Styles */
+.profile-logo {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.profile-logo img {
+    max-width: 150px;
+    height: auto;
+    display: inline-block;
+}
+
 .profile-links {
     display: flex;
     gap: 15px;
@@ -400,171 +418,6 @@ permalink: /herd/tapasvi/
     }
 }
 </style>
-
-## Introduction
-
-<div class="intro-hero">
-    <div class="intro-stats">
-        <div class="stat-card">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Global Tech Hubs</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">15M+</div>
-            <div class="stat-label">Cloud Assets Secured</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">500K+</div>
-            <div class="stat-label">Machines Protected</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number">9+</div>
-            <div class="stat-label">Industry Experience Years</div>
-        </div>
-    </div>
-
-    <div class="dynamic-viz-container">
-        <div class="viz-controls">
-            <button class="viz-btn active" data-viz="locations">Locations</button>
-            <button class="viz-btn" data-viz="companies">Companies</button>
-            <button class="viz-btn" data-viz="roles">Roles</button>
-            <button class="viz-btn" data-viz="technologies">Technologies</button>
-        </div>
-
-        <div class="viz-display">
-            <!-- Locations View -->
-            <div class="viz-panel active" id="viz-locations">
-                <div class="locations-timeline">
-                    <div class="location-card" style="animation-delay: 0s;">
-                        <div class="location-flag">🇺🇸</div>
-                        <div class="location-details">
-                            <h3>Seattle, US</h3>
-                            <p class="location-years">2016 - 2021</p>
-                            <p class="location-org">SAP • University of Washington</p>
-                            <div class="location-role">DevSecOps Engineer, Graduate Student</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-arrow">→</div>
-
-                    <div class="location-card" style="animation-delay: 0.2s;">
-                        <div class="location-flag">🇩🇰</div>
-                        <div class="location-details">
-                            <h3>Billund, Denmark</h3>
-                            <p class="location-years">2021 - 2023</p>
-                            <p class="location-org">LEGO Group</p>
-                            <div class="location-role">Senior Software Security Engineer</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-arrow">→</div>
-
-                    <div class="location-card" style="animation-delay: 0.4s;">
-                        <div class="location-flag">🇳🇱</div>
-                        <div class="location-details">
-                            <h3>Amsterdam, Netherlands</h3>
-                            <p class="location-years">2023 - 2025</p>
-                            <p class="location-org">ClickHouse</p>
-                            <div class="location-role">Software Security Engineer</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Companies Word Cloud -->
-            <div class="viz-panel" id="viz-companies">
-                <div class="word-cloud" id="companies-cloud"></div>
-            </div>
-
-            <!-- Roles Word Cloud -->
-            <div class="viz-panel" id="viz-roles">
-                <div class="word-cloud" id="roles-cloud"></div>
-            </div>
-
-            <!-- Technologies Word Cloud -->
-            <div class="viz-panel" id="viz-technologies">
-                <div class="word-cloud" id="tech-cloud"></div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-(function() {
-    // Data for word clouds
-    const techData = [
-        {text: 'Linux', size: 40}, {text: 'Kubernetes', size: 38}, {text: 'Databases', size: 36}, {text: 'AWS', size: 38}, {text: 'Azure', size: 36},
-        {text: 'GCP', size: 34}, {text: 'Python', size: 35}, {text: 'Terraform', size: 32},
-        {text: 'Docker', size: 30}, {text: 'ArgoCD', size: 28}, {text: 'GitHub Actions', size: 26},
-        {text: 'Prometheus', size: 24}, {text: 'Grafana', size: 22}, {text: 'Helm', size: 24},
-        {text: 'Okta', size: 20}, {text: 'ZeroTrust', size: 26}, {text: 'Tailscale', size: 22}, {text: 'Wiz', size: 22}, {text: 'Sysdig/Falco', size: 22}, {text: 'Claude', size: 22},
-        {text: 'Elastic', size: 22}, {text: 'Pagerduty', size: 18}, 
-        {text: 'Go', size: 24}, {text: 'SQL', size: 20}, {text: 'Bash', size: 18},
-        {text: 'Lambda', size: 22}, {text: 'IAM', size: 20}, {text: 'SIEM', size: 24},
-        {text: 'Wiz', size: 18}, {text: 'Falco', size: 18}, {text: 'SentinelOne', size: 20}, {text: 'Splunk', size: 20},
-    ];
-
-    const companiesData = [
-        {text: 'SAP Labs', size: 38}, {text: 'ClickHouse', size: 36}, {text: 'the LEGO Group', size: 36},
-        {text: 'University of Washington', size: 28}, {text: 'SAP Concur', size: 24}
-    ];
-
-    const rolesData = [
-        {text: 'Software Security Engineer', size: 38}, {text: 'Incident Response Lead', size: 32},
-        {text: 'Cybersecurity Specialist', size: 32}, {text: 'Platform Architect', size: 30},
-        {text: 'Cloud Security Specialist', size: 34}, {text: 'Infrastructure Security Engineer', size: 28},
-        {text: 'Zero Trust Architect', size: 26}, {text: 'Software Engineer', size: 24},
-        {text: 'Threat Intelligence Analyst', size: 22}, {text: 'Security Researcher', size: 26},
-        {text: 'DevSecOps Engineer', size: 20}, {text: 'IAM Engineer', size: 22},
-        {text: 'Data Analyst', size: 28}, {text: 'SIEM Architect', size: 24},
-        {text: 'Vulnerability Management Engineer', size: 22}, {text: 'Data Engineer', size: 28}
-    ];
-
-    function createWordCloud(containerId, data) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        container.innerHTML = '';
-        const colors = ['var(--link-color)', 'var(--link-hover-color)', '#ff00ff', '#ff66ff', '#cc00cc'];
-
-        data.forEach((item, index) => {
-            const word = document.createElement('span');
-            word.className = 'cloud-word';
-            word.textContent = item.text;
-            word.style.fontSize = item.size + 'px';
-            word.style.color = colors[index % colors.length];
-            word.style.animationDelay = (index * 0.1) + 's';
-            container.appendChild(word);
-        });
-    }
-
-    // Initialize word clouds
-    createWordCloud('tech-cloud', techData);
-    createWordCloud('companies-cloud', companiesData);
-    createWordCloud('roles-cloud', rolesData);
-
-    // Visualization switching
-    const vizBtns = document.querySelectorAll('.viz-btn');
-    const vizPanels = document.querySelectorAll('.viz-panel');
-
-    vizBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetViz = this.dataset.viz;
-
-            vizBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            vizPanels.forEach(panel => {
-                panel.classList.remove('active');
-                if (panel.id === 'viz-' + targetViz) {
-                    panel.classList.add('active');
-                }
-            });
-        });
-    });
-})();
-</script>
 
 ---
 
