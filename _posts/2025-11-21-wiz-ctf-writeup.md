@@ -33,8 +33,8 @@ The challenge provided pre-configured OAuth application credentials:
 
 ```bash
 env | grep AZURE
-# AZURE_CLIENT_ID=f83cb3d7-47de-4154-be65-c85d697cdfd3
-# AZURE_CLIENT_SECRET=yx68Q~II4GTgTEyh1NyDxBh73X0YZwQhxWDdfaIc
+# AZURE_CLIENT_ID=f83cb3d7-47de-4154-be65-xxxxxxxxxxxxx
+# AZURE_CLIENT_SECRET=yx68Q~[REDACTED]
 # AZURE_TENANT_ID=967a4bc4-782a-492d-a5d5-afe8a7550b5f (attacker tenant)
 
 echo $WEB_APP_ENDPOINT
