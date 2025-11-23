@@ -20,7 +20,6 @@ Coming from a Multi-Cloud and Kubernetes Security background, I thought Azure wo
 - **Terminology Overload:** Azure AD became Entra ID, but documentation uses both interchangeably
 - **Inconsistent Documentation:** Microsoft's docs would reference features that didn't exist in my API version, or use deprecated commands
 - **Convoluted Authentication Flows:** OAuth, OIDC, device codes, admin consent, delegated permissions, application permissions - the mental model took hours to build
-- **Multiple Tenant Confusion:** Tokens issued for one tenant don't work in another, even with the same credentials
 - **MyApps vs Portal vs CLI:** Three different interfaces, three different authentication methods, minimal clarity on when to use which
 
 The challenge wasn't hard because of technical complexity - it was hard because Azure's abstraction layers hide what's actually happening.
