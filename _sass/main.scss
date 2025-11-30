@@ -75,6 +75,16 @@ header {
     font-size: 16px;
     opacity: 0.8;
   }
+
+  .site-title-link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 }
 
 // Navigation styles
@@ -371,6 +381,10 @@ footer {
   z-index: 9999;
   box-shadow: 0 -4px 20px rgba(255, 0, 255, 0.1);
   animation: slideUp 0.3s ease-out;
+
+  &.cookie-consent-hidden {
+    display: none;
+  }
 }
 
 @keyframes slideUp {

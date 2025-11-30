@@ -108,7 +108,7 @@
     </div>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+    <div id="cookie-consent" class="cookie-consent cookie-consent-hidden">
         <div class="cookie-consent-content">
             <p>We use cookies to analyze site traffic and improve your experience. Your data is anonymized.</p>
             <div class="cookie-consent-buttons">
@@ -163,13 +163,13 @@
             // Show cookie banner
             function showBanner() {
                 const banner = document.getElementById('cookie-consent');
-                if (banner) banner.style.display = 'block';
+                if (banner) banner.classList.remove('cookie-consent-hidden');
             }
 
             // Hide cookie banner
             function hideBanner() {
                 const banner = document.getElementById('cookie-consent');
-                if (banner) banner.style.display = 'none';
+                if (banner) banner.classList.add('cookie-consent-hidden');
             }
 
             // Handle consent
