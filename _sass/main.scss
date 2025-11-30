@@ -358,3 +358,119 @@ footer {
 
   // Punctuation
 }
+
+// Cookie Consent Banner
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-top: 2px solid var(--link-color);
+  padding: 20px;
+  z-index: 9999;
+  box-shadow: 0 -4px 20px rgba(255, 0, 255, 0.1);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-consent-content {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+    flex: 1;
+    min-width: 250px;
+  }
+}
+
+.cookie-consent-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 10px 20px;
+  font-family: 'Iosevka', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+
+  &:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.cookie-accept {
+  border-color: var(--link-color);
+  background-color: rgba(255, 0, 255, 0.1);
+
+  &:hover {
+    background-color: rgba(255, 0, 255, 0.2);
+    border-color: var(--link-hover-color);
+  }
+}
+
+.cookie-decline {
+  &:hover {
+    border-color: #888888;
+  }
+}
+
+// Responsive cookie banner
+@media (max-width: 768px) {
+  .cookie-consent {
+    padding: 15px;
+  }
+
+  .cookie-consent-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+
+    p {
+      font-size: 13px;
+      min-width: auto;
+    }
+  }
+
+  .cookie-consent-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cookie-btn {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}
