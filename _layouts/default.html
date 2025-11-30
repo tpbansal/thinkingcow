@@ -100,13 +100,109 @@
         </footer>
     </div>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV4X074578"></script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-consent-content">
+            <p>We use cookies to analyze site traffic and improve your experience. Your data is anonymized.</p>
+            <div class="cookie-consent-buttons">
+                <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
+                <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google tag (gtag.js) - Only loads after consent -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GV4X074578');
+        // Cookie consent management
+        (function() {
+            const CONSENT_COOKIE = 'cookie_consent';
+            const CONSENT_EXPIRY_DAYS = 365;
+
+            // Get cookie value
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            // Set cookie
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = `expires=${date.toUTCString()}`;
+                document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+            }
+
+            // Initialize Google Analytics
+            function initGoogleAnalytics() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-GV4X074578', {
+                    'anonymize_ip': true,
+                    'cookie_flags': 'SameSite=Lax;Secure',
+                    'cookie_expires': 63072000  // 2 years in seconds
+                });
+
+                // Load gtag.js script
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-GV4X074578';
+                document.head.appendChild(script);
+            }
+
+            // Show cookie banner
+            function showBanner() {
+                const banner = document.getElementById('cookie-consent');
+                if (banner) banner.style.display = 'block';
+            }
+
+            // Hide cookie banner
+            function hideBanner() {
+                const banner = document.getElementById('cookie-consent');
+                if (banner) banner.style.display = 'none';
+            }
+
+            // Handle consent
+            function handleConsent(accepted) {
+                setCookie(CONSENT_COOKIE, accepted ? 'accepted' : 'declined', CONSENT_EXPIRY_DAYS);
+                hideBanner();
+                if (accepted) {
+                    initGoogleAnalytics();
+                }
+            }
+
+            // Check existing consent on page load
+            const consent = getCookie(CONSENT_COOKIE);
+            if (consent === 'accepted') {
+                initGoogleAnalytics();
+            } else if (consent === 'declined') {
+                // Do nothing - user declined
+            } else {
+                // No consent yet - show banner
+                showBanner();
+            }
+
+            // Attach event listeners
+            document.addEventListener('DOMContentLoaded', function() {
+                const acceptBtn = document.getElementById('cookie-accept');
+                const declineBtn = document.getElementById('cookie-decline');
+
+                if (acceptBtn) {
+                    acceptBtn.addEventListener('click', function() {
+                        handleConsent(true);
+                    });
+                }
+
+                if (declineBtn) {
+                    declineBtn.addEventListener('click', function() {
+                        handleConsent(false);
+                    });
+                }
+            });
+        })();
     </script>
 </body>
 
