@@ -609,6 +609,8 @@ Led the secure infrastructure enablement of ClickHouse on Azure by designing a r
 
 Led the infrastructure security for the production rollout of ClickHouse on GCP, a service that was expanded into the security compliance program (SOC 2 Type II and ISO 27001). Built centralized authentication and authorization using an integrated identity platform, ensuring seamless and secure access management across engineering (production, staging, and development) and non-engineering environments.
 
+Designed and implemented a secure landing zone, fully automated CI/CD, CSPM visibility, WAF (Cloud Armor - CRS Levels and custom rules), runtime threat detection, centralized security monitoring and alerting, and WAF for external endpoints.
+
 **Designed and implemented:**
 - Secure landing zone
 - Fully automated CI/CD
