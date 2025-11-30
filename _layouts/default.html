@@ -37,7 +37,7 @@
     <!-- SEO tags -->
     {% seo %}
 
-    <!-- Structured Data -->
+    <!-- Structured Data - Website/Blog -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -52,7 +52,12 @@
         "author": {
             "@type": "Person",
             "name": "{{ site.author.name }}",
-            "url": "{{ site.social.github }}"
+            "url": "{{ site.author.url }}",
+            "email": "{{ site.author.email }}",
+            "sameAs": [
+                "{{ site.social.github }}",
+                "{{ site.social.linkedin }}"
+            ]
         },
         "publisher": {
             "@type": "Organization",
@@ -62,6 +67,41 @@
                 "url": "{{ site.url }}/docs/images/cow1.jpg"
             }
         }
+    }
+    </script>
+
+    <!-- Structured Data - Person (for name searches: Tapasvi Bansal, Tapasvi) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ site.author.name }}",
+        "alternateName": "{{ site.author.alias }}",
+        "url": "{{ site.url }}",
+        "email": "{{ site.author.email }}",
+        "jobTitle": "Security Researcher & Software Engineer",
+        "description": "{{ site.description }}",
+        "knowsAbout": [
+            "Security Research",
+            "Software Engineering",
+            "Cloud Security",
+            "Product Security",
+            "Privacy Tools",
+            "Web Development",
+            "Browser Fingerprinting",
+            "Digital Privacy",
+            "Cybersecurity"
+        ],
+        "sameAs": [
+            "{{ site.social.github }}",
+            "{{ site.social.linkedin }}",
+            "https://twitter.com/{{ site.twitter.username }}"
+        ],
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Electronic Systems & Software Engineering"
+        },
+        "mainEntityOfPage": "{{ site.author.url }}"
     }
     </script>
 
