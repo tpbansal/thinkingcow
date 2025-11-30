@@ -4,10 +4,12 @@ url: https://www.thinkingcow.dev
 baseurl: ""
 
 author:
-  name: Thinking Cow
+  name: Tapasvi Bansal
+  alias: Thinking Cow
   email: tapasvi@thinkingcow.dev
   github: tpbansal
   linkedin: tapasvibansal
+  url: https://www.thinkingcow.dev/herd/tapasvi/
 
 # GitHub Pages settings
 theme: null
@@ -66,7 +68,7 @@ logo: /docs/images/logo5.png
 favicon: /docs/images/logo5.png
 
 # SEO settings
-google_analytics: G-XXXXXXXXXX
+google_analytics: G-GV4X074578
 lang: en
 twitter:
   username: thinkingcow
@@ -74,4 +76,4 @@ twitter:
 
 # Additional SEO
 tagline: "Security Research, Privacy Tools, and Web Development"
-keywords: "security research, privacy tools, web development, browser fingerprinting, digital privacy"
+keywords: "Tapasvi Bansal, tapasvi, security research, privacy tools, web development, browser fingerprinting, digital privacy, cybersecurity, software engineer, security researcher, cloud security, product security"
