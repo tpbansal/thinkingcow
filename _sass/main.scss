@@ -25,6 +25,27 @@ body {
   font-size: 14px;
 }
 
+// Skip to content link (accessibility)
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-color: var(--link-color);
+  color: var(--bg-color);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+
+  &:focus {
+    top: 0;
+    outline: 3px solid var(--link-hover-color);
+    outline-offset: 2px;
+  }
+}
+
 // Container and layout
 .container {
   max-width: 750px;

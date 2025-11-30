@@ -73,20 +73,23 @@
 </head>
 
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
     <div class="container">
-        <header>
+        <header role="banner">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="site-logo">
+                    <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="site-logo">
                 </div>
                 <div class="header-text">
-                    <h1><a href="{{ '/' | relative_url }}" class="site-title-link">{{ site.title }}</a></h1>
+                    <h1><a href="{{ '/' | relative_url }}" class="site-title-link" aria-label="Home - {{ site.title }}">{{ site.title }}</a></h1>
                     <p>{{ site.description }}</p>
                 </div>
             </div>
         </header>
 
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             {% for item in site.navigation %}
             {% assign current = false %}
             {% if page.url == item.url %}
@@ -94,26 +97,26 @@
             {% elsif page.url contains '/posts/' and item.url == '/posts/' %}
             {% assign current = true %}
             {% endif %}
-            <a href="{{ item.url | relative_url }}" {% if current %} class="current" {% endif %}>{{ item.title }}</a>
+            <a href="{{ item.url | relative_url }}" {% if current %} class="current" aria-current="page" {% endif %}>{{ item.title }}</a>
             {% endfor %}
         </nav>
 
-        <main class="content">
+        <main id="main-content" class="content" role="main">
             {{ content }}
         </main>
 
-        <footer>
+        <footer role="contentinfo">
             <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All Rights Reserved. MIT License. </p>
         </footer>
     </div>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent" class="cookie-consent cookie-consent-hidden">
+    <div id="cookie-consent" class="cookie-consent cookie-consent-hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-desc">
         <div class="cookie-consent-content">
-            <p>We use cookies to analyze site traffic and improve your experience. Your data is anonymized.</p>
+            <p id="cookie-consent-desc">We use cookies to analyze site traffic and improve your experience. Your data is anonymized.</p>
             <div class="cookie-consent-buttons">
-                <button id="cookie-accept" class="cookie-btn cookie-accept">Accept</button>
-                <button id="cookie-decline" class="cookie-btn cookie-decline">Decline</button>
+                <button id="cookie-accept" class="cookie-btn cookie-accept" aria-label="Accept cookies and enable analytics">Accept</button>
+                <button id="cookie-decline" class="cookie-btn cookie-decline" aria-label="Decline cookies and disable analytics">Decline</button>
             </div>
         </div>
     </div>
@@ -163,7 +166,14 @@
             // Show cookie banner
             function showBanner() {
                 const banner = document.getElementById('cookie-consent');
-                if (banner) banner.classList.remove('cookie-consent-hidden');
+                if (banner) {
+                    banner.classList.remove('cookie-consent-hidden');
+                    // Focus on the accept button for keyboard users
+                    setTimeout(() => {
+                        const acceptBtn = document.getElementById('cookie-accept');
+                        if (acceptBtn) acceptBtn.focus();
+                    }, 100);
+                }
             }
 
             // Hide cookie banner
@@ -196,6 +206,7 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const acceptBtn = document.getElementById('cookie-accept');
                 const declineBtn = document.getElementById('cookie-decline');
+                const banner = document.getElementById('cookie-consent');
 
                 if (acceptBtn) {
                     acceptBtn.addEventListener('click', function() {
@@ -208,6 +219,13 @@
                         handleConsent(false);
                     });
                 }
+
+                // Allow Escape key to decline cookies
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && banner && !banner.classList.contains('cookie-consent-hidden')) {
+                        handleConsent(false);
+                    }
+                });
             });
         })();
     </script>
