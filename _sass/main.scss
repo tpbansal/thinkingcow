@@ -23,6 +23,21 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-size: 14px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// Circuit background canvas
+#circuit-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8) 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8) 100%);
 }
 
 // Skip to content link (accessibility)
