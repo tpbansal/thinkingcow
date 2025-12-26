@@ -777,3 +777,44 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
 ---
 
 *For professional inquiries, connect via [LinkedIn]({{ site.social.linkedin }}) or [email](mailto:{{ site.social.email }}).*
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tapasvi Bansal",
+  "url": "https://www.thinkingcow.dev/herd/tapasvi/",
+  "image": "https://www.thinkingcow.dev/docs/images/cow1.jpg",
+  "jobTitle": "Software Security Engineer",
+  "description": "Tapasvi Bansal is a software security engineer specializing in infrastructure security, product security, Kubernetes, Cloud, and zero trust architecture.",
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "University of Washington",
+    "sameAs": "https://www.washington.edu/"
+  },
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "ClickHouse",
+      "sameAs": "https://clickhouse.com/"
+    }
+  ],
+  "knowsAbout": [
+    "Cloud Security",
+    "DevSecOps",
+    "Kubernetes Security",
+    "Zero Trust Architecture",
+    "AWS Security",
+    "Azure Security",
+    "GCP Security",
+    "Product Security",
+    "Incident Response",
+    "Cybersecurity"
+  ],
+  "sameAs": [
+    "https://github.com/tpbansal",
+    "https://linkedin.com/in/tapasvibansal"
+  ],
+  "email": "tapasvi@thinkingcow.dev"
+}
+</script>
