@@ -800,8 +800,9 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
     }
   ],
   "knowsAbout": [
+    "Security Engineering",
+    "Software Engineering",
     "Cloud Security",
-    "DevSecOps",
     "Kubernetes Security",
     "Zero Trust Architecture",
     "AWS Security",
@@ -809,7 +810,13 @@ Cultural Diversity preferences in Student Housing - Data was analyzed using cros
     "GCP Security",
     "Product Security",
     "Incident Response",
-    "Cybersecurity"
+    "Cybersecurity",
+    "Machine Learning",
+    "Data Science",
+    "Cost Optimizations",
+    "Product Management",
+    "Startups",
+    "Enterprise"
   ],
   "sameAs": [
     "https://github.com/tpbansal",
