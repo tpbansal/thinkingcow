@@ -4,8 +4,23 @@ title: Herd
 permalink: /about/
 ---
 
-<div class="cow-image-container">
+<div class="cow-image-container" id="cow-slideshow" title="Click to view all images">
     <img id="rotating-cow" src="/docs/images/cow0.jpg" alt="Thinking Cow" />
+</div>
+
+<!-- Modal for image gallery -->
+<div id="image-modal" class="image-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-body">
+            <button class="modal-nav modal-prev">‹</button>
+            <img id="modal-image" src="/docs/images/cow0.jpg" alt="Thinking Cow Gallery" />
+            <button class="modal-nav modal-next">›</button>
+        </div>
+        <div class="modal-counter">
+            <span id="modal-counter-text">1 / 5</span>
+        </div>
+    </div>
 </div>
 
 ## Who Are We?
@@ -58,11 +73,20 @@ Security challenges, vulnerability research, and educational content focused on 
 <style>
 .cow-image-container {
     text-align: center;
-    margin: 30px 0;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 15px;
     background-color: var(--subtle-bg);
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    max-width: 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cow-image-container:hover {
+    border-color: var(--link-color);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+    transform: scale(1.02);
 }
 
 .cow-image-container img {
@@ -71,6 +95,134 @@ Security challenges, vulnerability research, and educational content focused on 
     height: auto;
     border-radius: 4px;
     transition: opacity 0.5s ease-in-out;
+}
+
+/* Modal Styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--link-color);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--link-hover-color);
+}
+
+.modal-body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-body img {
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    border: 2px solid var(--border-color);
+}
+
+.modal-nav {
+    background-color: rgba(255, 0, 255, 0.2);
+    border: 1px solid var(--link-color);
+    color: var(--link-color);
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.modal-nav:hover {
+    background-color: rgba(255, 0, 255, 0.4);
+    color: var(--link-hover-color);
+    transform: scale(1.1);
+}
+
+.modal-nav:active {
+    transform: scale(0.95);
+}
+
+.modal-counter {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .cow-image-container {
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+    }
+
+    .modal-nav {
+        font-size: 30px;
+        padding: 8px 15px;
+    }
+
+    .modal-body {
+        gap: 10px;
+    }
+
+    .modal-body img {
+        max-height: 60vh;
+    }
+
+    .modal-counter {
+        font-size: 14px;
+    }
 }
 
 .contributors-section {
@@ -208,7 +360,15 @@ Security challenges, vulnerability research, and educational content focused on 
     ];
 
     let currentIndex = 0;
+    let modalIndex = 0;
     const imgElement = document.getElementById('rotating-cow');
+    const slideshow = document.getElementById('cow-slideshow');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const modalClose = document.querySelector('.modal-close');
+    const modalPrev = document.querySelector('.modal-prev');
+    const modalNext = document.querySelector('.modal-next');
+    const counterText = document.getElementById('modal-counter-text');
 
     function rotateCowImage() {
         if (imgElement) {
@@ -221,6 +381,74 @@ Security challenges, vulnerability research, and educational content focused on 
             }, 250);
         }
     }
+
+    function updateModalImage() {
+        if (modalImg && counterText) {
+            modalImg.style.opacity = '0';
+            setTimeout(() => {
+                modalImg.src = cowImages[modalIndex];
+                counterText.textContent = `${modalIndex + 1} / ${cowImages.length}`;
+                modalImg.style.opacity = '1';
+            }, 200);
+        }
+    }
+
+    function openModal() {
+        modalIndex = currentIndex;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        updateModalImage();
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function nextImage() {
+        modalIndex = (modalIndex + 1) % cowImages.length;
+        updateModalImage();
+    }
+
+    function prevImage() {
+        modalIndex = (modalIndex - 1 + cowImages.length) % cowImages.length;
+        updateModalImage();
+    }
+
+    // Event listeners
+    if (slideshow) {
+        slideshow.addEventListener('click', openModal);
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalNext) {
+        modalNext.addEventListener('click', nextImage);
+    }
+
+    if (modalPrev) {
+        modalPrev.addEventListener('click', prevImage);
+    }
+
+    // Close modal when clicking outside the image
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === 'block') {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        }
+    });
 
     // Start rotation after page load
     if (imgElement) {
