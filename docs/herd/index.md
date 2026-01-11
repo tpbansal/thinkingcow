@@ -60,8 +60,7 @@ We specialize in software, systems, and security with a strong foundation in ele
             <h4>Join the Herd</h4>
             <p>Interested in contributing to security research, privacy tools, or minimal web development?</p>
             <div class="contribute-links">
-                <a href="https://github.com/tpbansal/thinkingcow" target="_blank">View Repository</a>
-                <a href="mailto:{{ site.social.email }}">Get in Touch</a>
+                <a href="{{ site.social.linkedin }}" target="_blank">Connect on LinkedIn</a>
             </div>
         </div>
     </div>
