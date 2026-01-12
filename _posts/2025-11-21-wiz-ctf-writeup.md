@@ -308,7 +308,7 @@ Attempted to modify JWT tokens to add group claims. Failed because:
 
 ## Conclusion
 
-This CTF brilliantly demonstrated that modern cloud security isn't about finding buffer overflows or SQL injections - it's about understanding identity, authentication flows, and permission models. The "exploit" was using Azure's guest user feature exactly as Microsoft designed it, but for malicious purposes.
+This CTF demonstrated that modern cloud security isn't about finding buffer overflows or SQL injections, it's about understanding identity, authentication flows, and permission models. The "exploit" was using Azure's guest user feature exactly as Microsoft designed it, but for malicious purposes.
 
 **The hardest part wasn't the attack - it was understanding Azure.**
 

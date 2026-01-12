@@ -375,7 +375,7 @@ Many applications still rely on JavaScript validation alone, creating vulnerabil
 
 ## Conclusion
 
-This "Needle in a Haystack" challenge perfectly demonstrated that modern penetration testing requires more than just exploitation - it requires patience, thorough reconnaissance, and the ability to piece together information from multiple sources.
+This "Needle in a Haystack" challenge demonstrated that modern penetration testing requires more than just exploitation, it requires patience, thorough reconnaissance, and the ability to piece together information from multiple sources. This rabbit was fun!
 
 The attack succeeded not through complex exploits, but through:
 - Systematic reconnaissance and enumeration
@@ -383,12 +383,12 @@ The attack succeeded not through complex exploits, but through:
 - Recognizing client-side security weaknesses
 - Thinking like a developer who took shortcuts
 
-**Time Investment:**
-- OSINT and initial discovery: ~45 minutes
-- Subdomain enumeration (two levels): ~1 hour
-- API discovery and analysis: ~30 minutes
-- Client-side bypass and exploitation: ~20 minutes
-- Total: ~2.5 hours
+**Final Stats:**
+- OSINT and initial discovery: ~2 hour (over 2 months of break, :D)
+- Subdomain enumeration (two levels): ~4 hour
+- API discovery and analysis: ~3 hour
+- Client-side bypass and exploitation: ~2hour
+- Total: ~12 hours
 
 **What Made This Challenge Great:**
 - Realistic scenario (shadow IT is a real problem)
