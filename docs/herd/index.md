@@ -23,24 +23,32 @@ permalink: /about/
     </div>
 </div>
 
-## Who Are We?
+## Who Am I?
 
-We specialize in software, systems, and security with a strong foundation in electronic systems, software engineering, and data science. We often find ourselves exploring and continuously fascinated by the intersection of new technologies, security, and human behavior. This space serves as our laboratory observatory capturing our experiments with web technologies and documenting our findings.
+I'm a software and security engineer with a background in electronic systems engineering and data science. I spend my time exploring the topic of security, distributed systems, and human life.
 
-## What we do
+This space is my laboratory and observatory, where I document security research, build security or privacy focused tools, and share what I learn through writeups and experiments.
 
-- **Security Research**: Investigating how security works and its implications
-- **Software Development**: Building minimal, performant software that respect user security
-- **Digital Experiments**: Creating tools that demonstrate web technologies and security concepts
+## What I Do
 
-## Our Philosophy
+**Security Engineering & Research**: I like to keep things sharp. Continuous learning and document my approaches through detailed writeups. Topics include modern distributed Systems/API exploitation, DNS enumeration, OSINT, and web application security, product and cloud security.
 
-- **Minimalism**: Less code, faster apps, clearer thinking
-- **Security**: Users should understand what data they're sharing
-- **Transparency**: Open source everything when possible
-- **Continuous Learning**: Every project teaches something new
+**Privacy Tools & Experiments**: I build minimal tools that demonstrate security concepts and integrate security as part of the engineering stack. For example: [Digital Mirror](/saltlick/digital-mirror/) shows what information browsers expose to websites—a hands-on way to understand your digital fingerprint.
 
-## Contributors
+**Software Engineering**: I design and build secure, performant systems with a focus on cloud infrastructure, Kubernetes, distributed systems, auth*, and modern practices.
+
+## Philosophy
+
+- **Minimalism**: Less code means fewer bugs, faster performance, and clearer thinking. I believe in building only what's necessary.
+- **Transparency with Defense-in-Depth**: I assume full disclosure. Tools and techniques are open-sourced and documented, with security enforced through layered, resilient controls, not secrecy.
+- **User Privacy**: People should understand what data they're sharing. My work aim to make the invisible visible.
+- **Learning in Public**: Every project teaches something new. I share both successes and failures to help others navigate similar challenges.
+
+## Background & Experience
+
+I work as a software security engineer, specializing in cloud infrastructure security, product security, and distributed systems. My technical foundation comes from studying electronic systems and software engineering, with additional focus on data science and machine learning.
+
+## Contact & Collaboration
 
 <div class="contributors-section">
     <div class="contributor-card primary-contributor">
@@ -48,26 +56,21 @@ We specialize in software, systems, and security with a strong foundation in ele
             <img id="rotating-cow-small" src="/docs/images/cow1.jpg" alt="Thinking Cow" />
         </div>
         <div class="contributor-info">
-            <h4>Tapasvi</h4>
-            <p class="contributor-role">Founder & Contributor | <a href="/herd/tapasvi/">Profile</a></p>
-            <p class="contributor-bio">Security researcher and software engineer passionate about privacy, minimalism, and open source.</p>
-        </div>
-    </div>
-
-    <div class="contribute-card">
-        <div class="contribute-icon">🤝</div>
-        <div class="contribute-info">
-            <h4>Join the Herd</h4>
-            <p>Interested in contributing to security research, privacy tools, or minimal web development?</p>
-            <div class="contribute-links">
-                <a href="{{ site.social.linkedin }}" target="_blank">Connect on LinkedIn</a>
+            <h4>Tapasvi Bansal</h4>
+            <p class="contributor-role">Security Engineer & Researcher | <a href="/herd/tapasvi/">Full Profile</a></p>
+            <p class="contributor-bio">Interested in security research or software project collaboration, CTF challenges or hackathons, or discussing software security and privacy tools? Let's connect.</p>
+            <div class="contributor-links">
+                <a href="mailto:{{ site.author.email }}">Email</a>
+                <a href="{{ site.social.github }}" target="_blank">GitHub</a>
+                <a href="{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
             </div>
         </div>
     </div>
 </div>
 
-### Research & Writeups
-Security challenges, vulnerability research, and educational content focused on practical security concepts and defensive techniques.
+## Recent Work
+
+Check out my latest [security writeups](/posts/) covering CTF challenges, vulnerability research, and hands-on security techniques. I also build [experimental tools](/experiments/) that demonstrate web security concepts and privacy implications.
 
 <style>
 .cow-image-container {

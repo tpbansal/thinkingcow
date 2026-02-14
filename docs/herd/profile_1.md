@@ -1,7 +1,7 @@
 ---
 layout: page
 title: |
-    Tapasvi Bansal
+    TAPASVI
 permalink: /herd/tapasvi/
 toc: true
 description: "Tapasvi Bansal is a software security engineer specializing in cloud security, product security, Kubernetes, DevSecOps, and zero trust architecture. Previously at ClickHouse, LEGO Group, and SAP Labs."
