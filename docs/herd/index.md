@@ -39,10 +39,10 @@ This space is my laboratory and observatory, where I document security research,
 
 ## Philosophy
 
-- **Minimalism**: Less code means fewer bugs, faster performance, and clearer thinking. I believe in building only what's necessary.
-- **Transparency with Defense-in-Depth**: I assume full disclosure. Tools and techniques are open-sourced and documented, with security enforced through layered, resilient controls, not secrecy.
-- **User Privacy**: People should understand what data they're sharing. My work aim to make the invisible visible.
-- **Learning in Public**: Every project teaches something new. I share both successes and failures to help others navigate similar challenges.
+**Minimalism**: Less code means fewer bugs, faster performance, and clearer thinking. I believe in building only what's necessary.
+**Transparency with Defense-in-Depth**: I assume full disclosure. Tools and techniques are open-sourced and documented, with security enforced through layered, resilient controls, not secrecy.
+**User Privacy**: People should understand what data they're sharing. My work aim to make the invisible visible.
+**Learning in Public**: Every project teaches something new. I (try) to share as much possible to help others navigate similar challenges.
 
 ## Background & Experience
 
@@ -94,7 +94,8 @@ Check out my latest [security writeups](/posts/) covering CTF challenges, vulner
 .cow-image-container img {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: 4px;
     transition: opacity 0.5s ease-in-out;
 }
