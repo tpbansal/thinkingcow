@@ -60,7 +60,7 @@ I work as a software security engineer, specializing in cloud infrastructure sec
         </div>
         <div class="contributor-info">
             <h4>Tapasvi Bansal</h4>
-            <p class="contributor-role">Security Engineer & Researcher | <a href="/herd/tapasvi/">Full Profile</a></p>
+            <p class="contributor-role">Security Engineer & Researcher | <a href="/herd/tapasvi/">Work Profile</a></p>
             <p class="contributor-bio">Interested in security research or software project collaboration, CTF challenges or hackathons, or discussing software security and privacy tools? Let's connect.</p>
             <div class="contributor-links">
                 <a href="mailto:{{ site.author.email }}">Email</a>
