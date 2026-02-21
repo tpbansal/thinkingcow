@@ -41,6 +41,8 @@ I captured the database traffic to extract credentials:
 tcpdump -i eth0 -s 0 -w /tmp/pgdump.pcap port 5432 &
 ```
 
+The key question here is what caused new PostgreSQL authentication traffic to appear during the capture window. If the connection had already been established before capture started, the auth handshake (which carries the cleartext password in older PostgreSQL auth modes) would have already passed. In this case, I waited for the client application to reconnect — the container ran a service that periodically re-established its database connection, so after a short wait a fresh startup message with credentials appeared in the capture. This is the step that actually makes the credential extraction possible.
+
 Next, I used Scapy to analyze the traffic and attempt a direct exploitation:
 
 ```python
@@ -71,6 +73,8 @@ if pkts:
     send(exploit_packet, verbose=0)
     print("[+] Direct flag read attempt sent!")
 ```
+
+The injection didn't work, and there are a few reasons why. The `sniff(count=1)` call captures the first packet matching the filter regardless of whether it carries a payload — if it was a bare ACK or a control packet, `payload_len` would be 0 and `my_ack` would be miscalculated, producing a packet the server would reject as out-of-sequence. More fundamentally, injecting a raw `COPY TO PROGRAM` query mid-session requires the connection to be in a state ready to accept queries, and sequence/acknowledgment numbers must be exactly right. This was a documented dead end, but understanding why it failed informed the approach of simply capturing credentials instead.
 
 While the initial packet injection didn't work directly, I extracted the database credentials from the capture:
 
@@ -116,7 +120,8 @@ I enumerated available storage devices to identify escape paths:
 -- List block devices
 COPY out FROM PROGRAM 'sudo fdisk -l 2>&1';
 SELECT * FROM out; TRUNCATE out;
--- Found: /dev/vda (squashfs), /dev/vdb
+-- Found: /dev/vda, /dev/vdb (fdisk shows partition table entries, not filesystem types)
+-- Note: the filesystem type was inferred separately — blkid or file would identify squashfs
 
 -- Check current mounts
 COPY out FROM PROGRAM 'sudo cat /proc/mounts 2>&1';

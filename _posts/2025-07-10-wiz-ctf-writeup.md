@@ -47,6 +47,8 @@ curl -u ctf:88sPVWyC2P3p \
   -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"
 ```
 
+Two non-obvious behaviors made this work: the proxy forwarded the HTTP method verbatim (sending `PUT` to IMDS rather than defaulting to `GET`), and it blindly forwarded all incoming request headers — including `X-aws-ec2-metadata-token-ttl-seconds` — to the upstream target. Both behaviors are required for the IMDSv2 token flow to succeed. In a less permissive proxy implementation, this entire path would be blocked.
+
 ```bash
 # Retrieve IAM role name
 curl -u ctf:88sPVWyC2P3p \
@@ -113,7 +115,7 @@ This challenge demonstrated a sophisticated attack chain combining:
 
 1. **SSRF Discovery**: Finding the vulnerable proxy endpoint through actuator mappings
 2. **Cloud Metadata Abuse**: Leveraging IMDSv2 to extract AWS credentials
-3. **Policy Bypass**: Using presigned URLs to circumvent bucket-level deny policies
+3. **Policy Bypass**: Using presigned URLs to satisfy the bucket policy — presigned URLs are not a general-purpose bypass of bucket policies; S3 still evaluates them against the policy. What made this work is that the URL was signed with the backend's own credentials (which the bucket policy trusted) and the request was routed through the backend server via SSRF, so it appeared to originate from an authorized principal
 4. **Request Routing**: Using the original SSRF vulnerability to make the presigned request appear to come from the authorized backend server
 
 The attack succeeded because:

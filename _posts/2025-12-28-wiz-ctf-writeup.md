@@ -142,7 +142,7 @@ curl http://coding.pprod.testing.internal.ackme-corp.net
 **Findings:**
 - Login page for the chatbot application
 - Footer contained reference: `vibecodeawebsitetoday.com`
-- This linked to an external service used for "vibe coding"
+- This was the external platform used to build and host the API backend — the internal domain served the chatbot UI, while `vibecodeawebsitetoday.com` was the actual API service it talked to
 
 ### 7. API Endpoint Discovery - Finding the Docs
 
@@ -384,10 +384,10 @@ The attack succeeded not through complex exploits, but through:
 - Thinking like a developer who took shortcuts
 
 **Final Stats:**
-- OSINT and initial discovery: ~2 hour (over 2 months of break, :D)
-- Subdomain enumeration (two levels): ~4 hour
-- API discovery and analysis: ~3 hour
-- Client-side bypass and exploitation: ~2hour
+- OSINT and initial discovery: ~2 hours (over 2 months of break, :D)
+- Subdomain enumeration (two levels): ~4 hours
+- API discovery and analysis: ~3 hours
+- Client-side bypass and exploitation: ~2 hours
 - Total: ~12 hours
 
 **What Made This Challenge Great:**

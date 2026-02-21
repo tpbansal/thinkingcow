@@ -116,7 +116,7 @@ Discovered group:
 - **Group Type:** Dynamic Membership
 - **Membership Rule:** `(user.department -eq "Finance") and (user.jobTitle -eq "Manager") or (user.displayName -startsWith "CTF") and (user.userType -eq "Guest") or (user.city -eq "Seattle")`
 
-**Key Insight:** This was a dynamic group - users matching the rule are automatically added. I needed a guest user with displayName starting with "CTF".
+**Key Insight:** This was a dynamic group - users matching the rule are automatically added. In Azure's rule engine, `and` binds more tightly than `or`, so the rule evaluates as three separate conditions joined by `or`: Finance Managers, **Guest users whose displayName starts with "CTF"**, or anyone in Seattle. The second condition was the target: a guest user I controlled with a `CTF`-prefixed display name.
 
 <img src="/docs/images/wiz_ctf/august_2025/azctf_4.png" alt="Finding the flag group" style="max-width: 100%; height: auto;" />
 
