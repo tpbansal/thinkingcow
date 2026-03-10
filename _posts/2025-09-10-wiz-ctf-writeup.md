@@ -9,7 +9,7 @@ excerpt: "Exploiting network traffic capture, PostgreSQL command execution, and 
 
 ## Challenge Overview
 
-In this Wiz CTF challenge, I achieved a complete container escape by chaining together network traffic analysis, database exploitation, and container misconfigurations. The attack path involved capturing PostgreSQL credentials from unencrypted network traffic, leveraging database privileges for command execution, and ultimately mounting the host filesystem to retrieve the flag.
+This challenge simulates an underprivileged foothold inside a containerized environment where the objective is host-level access. The vulnerability chain runs through plaintext PostgreSQL traffic, credential sniffing to `COPY TO PROGRAM` execution to host filesystem mount via an overprivileged container. It's a concrete example of why container isolation is only as strong as the network, database config, and sudo policy around it.
 
 ## Vulnerabilities Exploited
 

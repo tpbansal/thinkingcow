@@ -9,13 +9,11 @@ excerpt: "A deep dive into the Wiz CTF challenge simulating the Midnight Blizzar
 
 ## Challenge Overview
 
-This challenge simulated the Midnight Blizzard (Nobelium) attack pattern against Microsoft's Azure infrastructure. The goal was to deploy a malicious OAuth application into a victim's Azure tenant through illicit admin consent, then leverage guest user permissions and dynamic group memberships to access a flag stored in Azure Blob Storage.
-
-**Core Challenge:** Understanding Azure's authentication architecture, not bypassing it.
+This challenge reconstructs the Midnight Blizzard (Nobelium) attack pattern: deploy a malicious OAuth app into a victim Azure tenant via admin consent, then pivot through guest user privileges and dynamic group memberships to reach blob storage. The vulnerability class is identity misconfiguration, abusing Azure's own legitimate auth flows rather than circumventing them. In real environments, this is why tenant-wide admin consent policies and guest access scoping are first-class security controls, not defaults to leave untouched.
 
 ## My Azure Frustrations (The Honest Truth)
 
-Coming from a Multi-Cloud and Kubernetes Security background, I thought Azure would be relatively simple but it was... an experience. The challenge description seemed straightforward, but Azure's documentation turned out to be my biggest adversary:
+Coming from a Multi-Cloud and Kubernetes Security background, I thought Azure would be relatively simple but it was... an experience. The challenge seemed straightforward, but Azure's documentation turned out to be my biggest adversary:
 
 - **Terminology Overload:** Azure AD became Entra ID, but documentation uses both interchangeably
 - **Inconsistent Documentation:** Microsoft's docs would reference features that didn't exist in my API version, or use deprecated commands

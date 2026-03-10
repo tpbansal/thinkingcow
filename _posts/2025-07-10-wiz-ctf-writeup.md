@@ -9,13 +9,13 @@ excerpt: "Exploiting Server-Side Request Forgery (SSRF) through Spring Boot Actu
 
 ## Challenge Overview
 
-In this Wiz CTF challenge, I exploited a Server-Side Request Forgery (SSRF) vulnerability via the `/proxy?url=` endpoint in a Spring Boot Actuator application. This allowed me to make internal requests to AWS services, access the Instance Metadata Service (IMDSv2), and ultimately bypass a data perimeter to retrieve a protected flag.
+This challenge simulates the endgame of a cloud breach: server-level access exists, but the target data sits behind an AWS S3 data perimeter. The core SSRF vulnerability is a Spring Boot proxy endpoint that blindly forwards requests, including to the Instance Metadata Service. In production, IMDS-sourced IAM credentials are exactly what data perimeters fail to account for, making an unfiltered proxy endpoint a reliable bypass.
 
 ## Vulnerability Exploited
 
 **Server-Side Request Forgery (SSRF)** combined with:
 - AWS Instance Metadata Service (IMDSv2) access
-- Misconfigured S3 bucket policies
+- S3 bucket policy bypass via trusted-principal routing
 - Presigned URL generation
 
 ## Attack Steps
