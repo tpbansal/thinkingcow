@@ -140,7 +140,7 @@ As a core member of the Multi-Cloud Security team, I significantly contributed t
 
 **Technologies:** Python, R, Shell Scripting, SQL, Ruby, JSON, YAML, HCL, Git/Github, Jenkins/Azure DevOps, AWS, Azure, GCP, Alibaba Cloud, JIRA, Cloudhealth, Docker, Kubernetes (GKE, EKS), Chef Inspec, Terraform, Splunk/ELK, Pagerduty, PrismaCloud, Twistlock, Dome9
 
----
+-
 
 #### DevSecOps Engineer<br>
 *Aug 2018 - Jan 2020* | Seattle, Washington, United States
@@ -155,7 +155,7 @@ Recruited as a foundational Security Engineering Driver for SAP's initial Public
 
 **Technologies:** Python, R, Shell Scripting, SQL, Ruby, JSON, YAML, HCL, Git, Github CI, AWS, Azure, GCP, Alibaba Cloud, JIRA, RightScale, Docker, Terraform, Splunk/ELK, Pagerduty, PrismaCloud (Evident.io + Redlock+), Twistlock, Dome9
 
----
+-
 
 #### Cybersecurity and Privacy Engineer (SAP Concur)<br>
 *Jun 2017 - Jul 2018* | Bellevue, Washington, United States
