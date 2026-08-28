@@ -59,9 +59,23 @@ canonical_url: https://www.thinkingcow.dev/herd/tapasvi/
 
 ## Professional Experience
 
+### Nebius
+**Senior Software Security Engineer - Product/s**<br>
+*June 2026 - Current* | Amsterdam, North Holland, Netherlands
+
+---
+
+### Backbase
+**Senior Cloud Security Engineer**<br>
+*Nov 2025 - May 2026* | Amsterdam, North Holland, Netherlands
+
+Platform security engineering for a isolated cloud-native banking environment (AKS, Istio, Databricks/AI Foundry), covering security assessments, control configuration (CNAPP, WAF, Policy-as-Code/Kyverno, HSM), and platform infrastructure feature development across 40+ production banking tenants. Led full-cycle incident response for supply chain compromises, credential stuffing attacks, authentication vulnerabilities, networking and infrastructure exposure events.
+
+---
+
 ### ClickHouse
 **Software Security Engineer**<br>
-*Mar 2023 - Aug 2025* | 2 yrs 6 mos | Amsterdam, North Holland, Netherlands
+*Mar 2023 - Aug 2025* | Amsterdam, North Holland, Netherlands
 
 Tapped to join the founding security team in Amsterdam, I developed software security solutions (auth*, o11y, encryption) for modern distributed database systems while safeguarding multi-cloud infrastructure across AWS, GCP, and Azure. My contributions focus on strengthening core and systemic security across infrastructure, people, and products for column-oriented OLAP/Database systems.
 
@@ -75,7 +89,7 @@ I served as the **Incident Response Lead (ICL)** for ClickHouse Cloud, where I o
 
 ### The LEGO Group
 **Senior Software Security Engineer**<br>
-*Feb 2021 - Feb 2023* | 2 yrs 1 mos | Billund Municipality, Region of Southern Denmark, Denmark
+*Feb 2021 - Feb 2023* | Billund Municipality, Region of Southern Denmark, Denmark
 
 Brought into LEGO HQ in Denmark to improve the security posture of LEGO Group's hybrid cloud environment and industrial systems (ICT) across manufacturing, logistics, and supply chain. Reporting to a Senior Director, part of the Technology Transformation Team. My efforts initially focused on innovation and improving security on a global Kubernetes footprint and refining reusable cloud security controls. Later transitioned to LEGO's Digital Security Engineering Team to scale security programs across the organization.
 
@@ -94,7 +108,7 @@ Brought into LEGO HQ in Denmark to improve the security posture of LEGO Group's 
 
 ### SAP Labs
 **Senior DevSecOps Engineer**<br>
-*June 2018 - Jan 2021* | 2 yrs 8 mos | Seattle, Washington, United States
+*June 2018 - Jan 2021* | Seattle, Washington, United States
 
 *SAP Labs, LLC, Center of Excellence | Global Multi-Cloud Services (AWS, Azure, GCP, AliCloud)*<br>
 *Reporting to the VP of Multi-Cloud Services*
@@ -114,7 +128,7 @@ As a core member of the Multi-Cloud Security team, I significantly contributed t
 ---<br>
 
 #### DevSecOps Engineer<br>
-*Aug 2018 - Jan 2020* | 1 yr 6 mos | Seattle, Washington, United States
+*Aug 2018 - Jan 2020* | Seattle, Washington, United States
 
 Recruited as a foundational Security Engineering Driver for SAP's initial Public Cloud Transformation. As the first engineer on the team, I designed and developed our DevSecOps approach, implementing security solutions across multi-cloud infrastructure with over $1 billion in yearly public cloud spending and driving critical organizational-level initiatives.
 
@@ -129,7 +143,7 @@ Recruited as a foundational Security Engineering Driver for SAP's initial Public
 ---<br>
 
 #### Cybersecurity and Privacy Engineer (SAP Concur)<br>
-*Jun 2017 - Jul 2018* | 1 yr 2 mos | Bellevue, Washington, United States
+*Jun 2017 - Jul 2018* | Bellevue, Washington, United States
 
 Started as an SAP iXP Intern. Continued as a co-op student employee at the SAP Concur HQ. A late-stage B2B high-growth startup (previously Concur) for Travel & Expense management.
 
@@ -138,6 +152,13 @@ Started as an SAP iXP Intern. Continued as a co-op student employee at the SAP C
 - Built applications for security engineering (Lambda functions, MS SQL database, Python), Integrations with Splunk
 - Threat Model Development; Network & Log Analysis via Splunk
 - Built applications on Vulnerability Management platform use case for Security Operations Team and Risk Management (Market Technologies: Splunk, Rapid7 Nexpose, Nessus)
+
+---
+### Startup
+**Data Analyst**<br>
+*July 2014 - June 2016* | Remote
+
+Joined a boutique startup providing web and data solutions to SMB markets
 
 ---
 
