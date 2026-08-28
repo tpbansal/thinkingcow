@@ -53,6 +53,21 @@ canonical_url: https://www.thinkingcow.dev/herd/tapasvi/
     background-color: rgba(255, 0, 255, 0.1);
 }
 
+/* Entry Metadata Styles (role/issuer + date + location lines) */
+.content h3 + p,
+.content h4 + p {
+    color: rgba(221, 221, 221, 0.6);
+}
+
+.content h3 + p strong,
+.content h4 + p strong {
+    color: var(--neon-blue);
+}
+
+.content h4 {
+    color: var(--neon-blue);
+}
+
 </style>
 
 ---
@@ -174,32 +189,43 @@ Joined a boutique startup providing web and data solutions to SMB markets
 
 ## Certifications & Licenses
 
+### Nebius AI CloudOps Engineer Certification
+**Nebius Academy** | *Issued July 2026* | [View Badge](https://www.credly.com/badges/44d91699-d14f-4519-a442-3daad7ca827c)
+
+
 ### CKS: Certified Kubernetes Security Specialist
-**The Linux Foundation** | *Issued Aug 2025* | [View Badge](https://www.credly.com/badges/85b67050-2349-4d95-9d61-ed3da3ca1c21)<br>
+**The Linux Foundation** | *Issued Aug 2025* | [View Badge](https://www.credly.com/badges/85b67050-2349-4d95-9d61-ed3da3ca1c21)
+
 **Skills:** Security, Distributed Systems, Open-Source Software, Application Security
 
 ### Certificate of Cloud Security Knowledge (CCSK)
-**Cloud Security Alliance** | *Issued Apr 2022* | [View Badge](https://www.credly.com/badges/2b1fe3ca-71b9-48af-89ba-ffef7a2f7453)<br>
+**Cloud Security Alliance** | *Issued Apr 2022* | [View Badge](https://www.credly.com/badges/2b1fe3ca-71b9-48af-89ba-ffef7a2f7453)
+
 **Skills:** Open-Source Software, Security, Identity and Access Management (IAM), Distributed Systems, Cybersecurity
 
 ### CKA: Certified Kubernetes Administrator
-**The Linux Foundation** | *Issued Jan 2022* | [View Badge](https://www.credly.com/badges/5d17795f-8274-41c4-8149-a47bb8907afe)<br>
+**The Linux Foundation** | *Issued Jan 2022* | [View Badge](https://www.credly.com/badges/5d17795f-8274-41c4-8149-a47bb8907afe)
+
 **Skills:** Linux, Open-Source Software, Kubernetes, Distributed Systems, DevOps
 
 ### Code Source Control and Git
-**QA North America** | *Issued Apr 2020* | [View Badge](https://www.credential.net/f41a1b77-a328-4b05-89fd-55e75b5ead1b#acc.vfMK69XQ)<br>
+**QA North America** | *Issued Apr 2020* | [View Badge](https://www.credential.net/f41a1b77-a328-4b05-89fd-55e75b5ead1b#acc.vfMK69XQ)
+
 **Skills:** Security Operations, Open-Source Software, Data Science, Distributed Systems, DevOps, Software Development
 
 ### Oracle Certified Associate, Database 11g Administrator
-**Oracle** | *Issued Sep 2015* | [View Badge](https://www.credly.com/badges/77658dfb-69c7-4334-8ac2-8c04d508bbe1)<br>
+**Oracle** | *Issued Sep 2015* | [View Badge](https://www.credly.com/badges/77658dfb-69c7-4334-8ac2-8c04d508bbe1)
+
 **Skills:** Microsoft SQL Server, Databases, PL/SQL, SQL
 
 ### Big Data Hadoop Foundations
-**IBM** | *Issued Aug 2015* | [View Badge](https://www.credly.com/badges/f569e5da-c683-4f67-b808-829b11e0cc92)<br>
+**IBM** | *Issued Aug 2015* | [View Badge](https://www.credly.com/badges/f569e5da-c683-4f67-b808-829b11e0cc92)
+
 **Skills:** Data Science, Machine Learning, Databases, Distributed Systems
 
 ### Microsoft Certified Specialist: Programming in HTML5 with JavaScript and CSS3
-**Microsoft** | *Issued Apr 2013* | [View Badge](https://www.credly.com/badges/d8498e65-c39d-41b3-ae67-f38a6e734bcd)<br>
+**Microsoft** | *Issued Apr 2013* | [View Badge](https://www.credly.com/badges/d8498e65-c39d-41b3-ae67-f38a6e734bcd)
+
 **Skills:** Application Developer, Data Security, JavaScript, HTML5, Object-based Programming
 
 ---
